@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A股交易学习地图</title>
+<style>
+:root{--bg:#f8fafc;--surface:#fff;--surface2:#f1f5f9;--border:#e2e8f0;--accent:#dc2626;--accent-light:rgba(220,38,38,.08);--green:#16a34a;--green-light:rgba(22,163,74,.08);--amber:#d97706;--amber-light:rgba(217,119,6,.08);--blue:#2563eb;--blue-light:rgba(37,99,235,.08);--purple:#7c3aed;--purple-light:rgba(124,58,237,.08);--teal:#0f766e;--teal-light:rgba(15,118,110,.08);--text:#0f172a;--text-2:#334155;--text-3:#64748b;--nav-w:288px;--nav-bg:#111827;--nav-border:#374151;--nav-text:#e5e7eb;--nav-text3:#9ca3af}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font:16px/1.7 system-ui,-apple-system,"Segoe UI","Noto Sans SC",sans-serif}.progress{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--accent),#f59e0b,var(--purple),var(--teal));z-index:20;width:0}
+.sidebar{position:fixed;inset:0 auto 0 0;width:var(--nav-w);background:var(--nav-bg);border-right:1px solid var(--nav-border);padding:24px 18px;display:flex;flex-direction:column;z-index:10;overflow-y:auto}.brand{color:#fff;font-weight:900;font-size:18px;line-height:1.3}.brand small{display:block;color:var(--nav-text3);font-size:11px;margin-top:6px}.nav-items{margin:14px 0;display:grid;gap:2px}.nav-items a{color:var(--nav-text);text-decoration:none;padding:7px 10px;border-radius:7px;font-size:13px;display:block}.nav-items a.active,.nav-items a:hover{background:#374151;color:#fff}.nav-section{color:var(--nav-text3);font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:.08em;padding:10px 10px 4px}.sidebar-foot{margin-top:auto;border-top:1px solid var(--nav-border);padding-top:14px;display:grid;gap:6px}.sidebar-foot span{color:var(--nav-text3);font-size:12px}
+.main{margin-left:var(--nav-w);padding:0 44px 80px}.content-wrap{max-width:1040px;margin:0 auto}.hero{padding:60px 0 30px}.hero-eyebrow{color:var(--accent);font-weight:900;letter-spacing:.06em;font-size:12px;text-transform:uppercase}h1{font-size:44px;line-height:1.08;margin:14px 0 16px;letter-spacing:-.04em}h1 em{font-style:normal;background:linear-gradient(90deg,var(--accent),#f97316,var(--purple),var(--teal));-webkit-background-clip:text;-webkit-text-fill-color:transparent}.hero-sub{font-size:17px;color:var(--text-2);max-width:800px;margin:0 0 18px}.chip-row{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 18px}.chip{background:var(--accent-light);color:#b91c1c;border:1px solid rgba(220,38,38,.18);padding:5px 10px;border-radius:999px;font-size:12px;font-weight:800}.chip.c2{background:var(--purple-light);color:#6d28d9;border-color:rgba(124,58,237,.18)}.chip.c3{background:var(--teal-light);color:#0f766e;border-color:rgba(15,118,110,.18)}.notice{background:var(--surface);border:1px solid var(--border);border-left:4px solid var(--accent);border-radius:12px;padding:14px 16px;color:var(--text-2);font-size:14px}
+.part-divider{margin:44px 0 8px;padding:0}.part-divider h2{font-size:28px;margin:0 0 6px;letter-spacing:-.02em}.part-divider p{margin:0;color:var(--text-3);font-size:15px}
+.tone-red{--accent:#dc2626;--accent-light:rgba(220,38,38,.08)}.tone-purple{--accent:#7c3aed;--accent-light:rgba(124,58,237,.08)}.tone-teal{--accent:#0f766e;--accent-light:rgba(15,118,110,.08)}
+.section{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:26px;margin:18px 0;box-shadow:0 8px 24px rgba(15,23,42,.04)}.sec-head{display:flex;gap:12px;align-items:flex-start;margin-bottom:16px}.sec-num{background:var(--accent);color:#fff;border-radius:10px;padding:5px 9px;font-weight:900;font-size:14px;flex-shrink:0}.sec-title h3{margin:0;font-size:25px;letter-spacing:-.02em}.sec-title p{margin:3px 0 0;color:var(--text-3);font-size:14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:10px;margin:12px 0}.card{background:var(--surface2);border:1px solid var(--border);border-radius:14px;padding:14px}.card h4{margin:0 0 7px;font-size:15px}.card p{margin:5px 0;color:var(--text-2);font-size:13px}.card a,.card a{color:var(--accent);font-weight:800}
+.tag{display:inline-block;border-radius:999px;padding:2px 8px;font-size:11px;font-weight:900;margin:0 4px 6px 0}.tag-red{background:var(--accent-light);color:#b91c1c}.tag-green{background:var(--green-light);color:#15803d}.tag-blue{background:var(--blue-light);color:#1d4ed8}.tag-amber{background:var(--amber-light);color:#b45309}.tag-purple{background:var(--purple-light);color:#6d28d9}.tag-teal{background:var(--teal-light);color:#0f766e}
+.table{width:100%;border-collapse:collapse;font-size:14px;margin:12px 0}.table th{background:var(--surface2);padding:8px 10px;text-align:left;border:1px solid var(--border);font-weight:900}.table td{padding:8px 10px;border:1px solid var(--border);vertical-align:top}.table tr:nth-child(even){background:#fafafa}
+.callout{border-radius:12px;padding:12px 14px;margin:12px 0;font-size:14px}.callout.info{background:var(--blue-light);border:1px solid rgba(37,99,235,.18)}.callout.warn{background:var(--amber-light);border:1px solid rgba(217,119,6,.22)}.callout.tip{background:var(--green-light);border:1px solid rgba(22,163,74,.2)}.callout.danger{background:var(--accent-light);border:1px solid rgba(220,38,38,.22)}
+.kline-grid{display:flex;flex-wrap:wrap;gap:14px;margin:14px 0;overflow-x:auto;padding-bottom:4px}.kline-item{display:flex;flex-direction:column;align-items:center;gap:6px;flex:0 0 auto}.kline-item span{font-size:11px;color:var(--text-3);font-weight:700;text-align:center}.kline-item svg{max-width:100%;height:auto}
+.flow{display:grid;gap:8px;margin:12px 0}.flow-step{display:grid;grid-template-columns:120px 1fr;gap:10px;background:var(--surface2);border:1px solid var(--border);border-radius:12px;padding:10px}.flow-step strong{color:var(--accent)}
+.mini-flow{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:12px 0}.flow-pill,.pill{border-radius:999px;padding:6px 10px;font-size:13px;font-weight:900}.flow-pill{background:var(--accent-light);border:1px solid rgba(124,58,237,.18);color:#6d28d9}.pill{background:var(--teal-light);border:1px solid rgba(15,118,110,.18);color:#0f766e}.arrow{color:var(--text-3);font-weight:900}
+.month-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px;margin:12px 0}.month-card{border:1px solid var(--border);background:var(--surface2);border-radius:14px;padding:13px}.month-card h4{margin:0 0 8px;font-size:16px}.month-card ul{margin:0;padding-left:18px;color:var(--text-2);font-size:13px}.month-card li{margin:4px 0}
+.chain{display:grid;gap:12px;margin:14px 0}.chain-layer{border:1px solid var(--border);border-radius:16px;background:var(--surface2);overflow:hidden}.chain-head{background:#111827;color:#fff;padding:12px 16px;font-weight:900;display:flex;justify-content:space-between;gap:10px;align-items:center}.chain-head span{font-size:12px;color:#c4b5fd;font-weight:700}.chain-body{padding:14px 16px}.node{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:12px;margin:10px 0}.node-title{font-weight:900;margin-bottom:6px;color:var(--accent)}.node p{margin:4px 0;color:var(--text-2);font-size:13px}.tier{display:grid;gap:6px;margin-top:8px}.tier-row{display:grid;grid-template-columns:90px 1fr;gap:10px;font-size:13px}.tier-label{font-weight:900;color:#fff;background:var(--accent);border-radius:8px;padding:3px 7px;text-align:center;height:max-content}
+.timeline{display:grid;gap:10px;margin:12px 0}.tl-item{display:grid;grid-template-columns:130px 1fr;background:var(--surface2);border:1px solid var(--border);border-radius:14px;overflow:hidden}.tl-time{background:#111827;color:#99f6e4;padding:12px;font-weight:900;font-size:13px}.tl-body{padding:12px 14px;color:var(--text-2);font-size:14px}
+.case-box{background:#0f172a;color:#e2e8f0;border-radius:16px;padding:16px 18px;margin:12px 0;font-size:14px;line-height:1.8}.case-box strong{color:#99f6e4}.case-step{border-left:3px solid #14b8a6;padding-left:12px;margin:10px 0}
+.code-block{background:#0f172a;color:#e2e8f0;border-radius:14px;padding:16px 18px;margin:12px 0;font-size:13px;line-height:1.8;font-family:'Consolas','Monaco',monospace;white-space:pre-wrap}.code-comment{color:#94a3b8}.code-key{color:#93c5fd}.code-val{color:#86efac}
+.strat-card{background:var(--surface2);border:1px solid var(--border);border-radius:16px;padding:16px;margin:12px 0}.strat-head{display:flex;align-items:center;gap:10px;margin-bottom:10px;flex-wrap:wrap}.strat-title{font-size:17px;font-weight:900}.strat-meta{display:flex;gap:6px;flex-wrap:wrap}.strat-badge{border-radius:999px;padding:3px 10px;font-size:11px;font-weight:900;border:1px solid}.badge-time{background:#f0fdf4;color:#166534;border-color:#bbf7d0}.badge-diff{background:#fef3c7;color:#92400e;border-color:#fde68a}.badge-hold{background:#ede9fe;color:#6d28d9;border-color:#ddd6fe}.strat-body{color:var(--text-2);font-size:14px;line-height:1.7}
+.calc-box{background:var(--surface2);border:2px solid var(--accent);border-radius:16px;padding:18px;margin:14px 0}.calc-title{font-weight:900;font-size:16px;color:var(--accent);margin-bottom:12px}.calc-row{display:grid;grid-template-columns:180px 1fr auto;gap:10px;align-items:center;margin:8px 0}.calc-row label{font-size:14px;font-weight:700}.calc-input{border:1px solid var(--border);border-radius:8px;padding:8px 10px;font-size:15px;width:110px;font-family:inherit}.calc-unit{color:var(--text-3);font-size:13px}.calc-result{background:#0f172a;border-radius:12px;padding:12px 16px;margin-top:12px;color:#e2e8f0;font-size:14px;min-height:60px}
+.self-test{background:var(--surface2);border:1px solid var(--border);border-radius:14px;padding:14px;margin:12px 0}.st-q{font-weight:700;margin-bottom:8px;font-size:15px}.st-opts{display:grid;gap:6px}.st-opt{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:10px 12px;cursor:pointer;font-size:14px;transition:all .12s;text-align:left;width:100%;font-family:inherit}.st-opt:hover{border-color:var(--accent);background:var(--accent-light)}.st-opt.correct{background:var(--green-light);border-color:#16a34a;color:var(--green);pointer-events:none}.st-opt.wrong{background:var(--accent-light);border-color:#dc2626;color:#b91c1c;pointer-events:none}.st-explain{display:none;margin-top:8px;padding:10px;background:#f8fafc;border-radius:10px;font-size:13px;color:var(--text-2);border:1px solid var(--border)}.st-explain.show{display:block}.st-reset{margin-top:10px;background:none;border:1px solid var(--border);border-radius:8px;padding:6px 14px;font-size:13px;color:var(--text-3);cursor:pointer;display:none}.st-reset:hover{border-color:var(--accent);color:var(--accent)}.st-explain.show~.st-reset{display:inline-block}
+.step-title{font-weight:900;font-size:15px;margin:14px 0 6px}
+.page-footer{margin:40px 0 0;padding-top:20px;border-top:1px solid var(--border);color:var(--text-3);font-size:14px}
+.menu-btn{display:none;position:fixed;right:16px;bottom:16px;background:var(--accent);color:#fff;border:0;border-radius:999px;padding:11px 14px;font-weight:900;z-index:30;font-size:14px}
+@media(max-width:768px){.sidebar{display:none}.sidebar.open{display:flex}.main{margin-left:0;padding:0 18px 60px}h1{font-size:32px}.flow-step,.tier-row,.calc-row,.tl-item{grid-template-columns:1fr}.menu-btn{display:block}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="progress" id="prog"></div>
+<aside class="sidebar" id="sidebar">
+  <div class="brand">A股交易学习地图<small>一个文件 · 四大模块 · 2026</small></div>
+  <nav class="nav-items">
+    <div class="nav-section">模块一 · 入门基础</div>
+    <a href="#a01">01 A股规则</a>
+    <a href="#a02">02 K线逻辑</a>
+    <a href="#a03">03 量价关系</a>
+    <a href="#a04">04 主力行为</a>
+    <a href="#a05">05 均线与指标</a>
+    <a href="#a06">06 大盘环境</a>
+    <a href="#a07">07 年度节点时间线</a>
+    <div class="nav-section">模块二 · 策略与实操</div>
+    <a href="#b00">00 先选你的类型</a>
+    <a href="#b01">01 涨停板系列</a>
+    <a href="#b02">02 情绪周期判断</a>
+    <a href="#b03">03 龙头跟踪</a>
+    <a href="#b04">04 均线回踩</a>
+    <a href="#b05">05 底部量堆突破</a>
+    <a href="#b06">06 技术背离反转</a>
+    <a href="#b07">07 软件筛选指南</a>
+    <a href="#b08">08 仓位计算器</a>
+    <a href="#b09">09 K线形态自测</a>
+    <a href="#b10">10 交易心理</a>
+    <a href="#b11">11 不推荐的策略</a>
+    <div class="nav-section">模块三 · 财报与产业链</div>
+    <a href="#c01">01 三张表怎么看</a>
+    <a href="#c02">02 核心指标</a>
+    <a href="#c03">03 财务风险信号</a>
+    <a href="#c04">04 估值方法</a>
+    <a href="#c05">05 AI半导体全链路</a>
+    <a href="#c06">06 算力与光模块</a>
+    <a href="#c07">07 新能源链条</a>
+    <a href="#c08">08 产业链选股逻辑</a>
+    <div class="nav-section">模块四 · 信息源与传导</div>
+    <a href="#d01">01 信息源地图</a>
+    <a href="#d02">02 涨价数据哪里看</a>
+    <a href="#d03">03 海外信号跟踪</a>
+    <a href="#d04">04 价格如何传导</a>
+    <a href="#d05">05 DRAM案例</a>
+    <a href="#d06">06 碳酸锂案例</a>
+    <a href="#d07">07 每日每周工作流</a>
+    <a href="#d08">08 复盘模板</a>
+  </nav>
+  <div class="sidebar-foot">
+    <span>四个模块已合并为单文件</span>
+    <span>学习材料 · 不构成投资建议</span>
+  </div>
+</aside>
+<button class="menu-btn" onclick="document.getElementById('sidebar').classList.toggle('open')">菜单</button>
+<main class="main"><div class="content-wrap">
+<header class="hero">
+  <div class="hero-eyebrow">A股交易 · 完整学习地图 · 2026</div>
+  <h1>规则、策略、财报、<em>信息传导全在一个文件</em></h1>
+  <p class="hero-sub">原来分散在四个文件里的内容已按顺序合并：入门基础 → 策略与软件实操 → 财报与产业链 → 信息源与价格传导。左侧导航直接跳转，全部内容离线可读，打开这一个文件即可完整预览。</p>
+  <div class="chip-row"><span class="chip">A股规则</span><span class="chip">K线与量价</span><span class="chip">主力行为</span><span class="chip">年度节点</span><span class="chip c2">涨停板策略</span><span class="chip c2">N字形</span><span class="chip c2">仓位计算器</span><span class="chip c2">交易心理</span><span class="chip c3">财报三张表</span><span class="chip c3">AI半导体</span><span class="chip c3">新能源</span><span class="chip c3">涨价传导</span><span class="chip c3">复盘系统</span></div>
+  <div class="notice"><strong>风险提示：</strong>本站是学习材料，不构成投资建议。所有策略都必须配合止损、仓位管理和复盘，不能把任何形态、指标或消息当成必中信号。四个模块建议按顺序阅读，但也可以按左侧导航直接跳到自己关心的章节。</div>
+</header>
+<!--MODULE-A-START-->
+<div class="part-divider tone-red"><h2>模块一 · 入门基础</h2><p>先看懂市场语言，再谈策略和收益。本页解决新手最容易漏掉的底层问题：A股规则、K线、成交量、主力行为、大盘环境和每个月需要关注的事件。</p></div>
+
+<section class="section tone-red" id="a01">
+  <div class="sec-head"><span class="sec-num">01</span><div class="sec-title"><h3>A股基础规则</h3><p>很多交易策略在A股有效，是因为A股有独特交易制度。</p></div></div>
+  <div class="grid">
+    <div class="card"><span class="tag tag-red">T+1</span><h4>今天买，明天才能卖</h4><p>这意味着追涨停不是日内交易，而是押第二天情绪延续。买入前必须先想好次日低开怎么办。</p></div>
+    <div class="card"><span class="tag tag-red">涨跌停</span><h4>普通10%，ST 5%，科创/创业20%</h4><p>涨跌停让资金集中在封板、炸板、连板上博弈，也让情绪周期比美股更明显。</p></div>
+    <div class="card"><span class="tag tag-amber">交易成本</span><h4>印花税卖出收，佣金双向</h4><p>频繁交易会被成本持续侵蚀，短线策略必须有足够胜率和盈亏比。</p></div>
+    <div class="card"><span class="tag tag-blue">交易时段</span><h4>竞价、早盘、午后、尾盘</h4><p>早盘决定强弱，午后看承接，尾盘常见资金抢筹或撤退；不同时间的涨停含义不同。</p></div>
+  </div>
+  <div class="callout info"><strong>新手第一条规则：</strong>不要因为涨停板限制而觉得亏损也有限。A股连续跌停会让你卖不出去，真正的风险是流动性消失。</div>
+</section>
+
+<section class="section tone-red" id="a02">
+  <div class="sec-head"><span class="sec-num">02</span><div class="sec-title"><h3>K线逻辑：不是看形状，是看多空力量</h3><p>K线的本质是价格在一天内的攻防记录。</p></div></div>
+  <table class="table">
+    <thead><tr><th>形态</th><th>怎么看</th><th>实战含义</th></tr></thead>
+    <tbody>
+      <tr><td>长阳线</td><td>实体大，收盘接近最高价</td><td>买方占优；如果放量突破平台，可能是启动信号</td></tr>
+      <tr><td>长阴线</td><td>实体大，收盘接近最低价</td><td>卖方占优；如果高位放量长阴，优先按出货看</td></tr>
+      <tr><td>上影线</td><td>盘中冲高回落</td><td>上方抛压大；低位小上影可能是试盘，高位长上影要警惕</td></tr>
+      <tr><td>下影线</td><td>盘中下探回升</td><td>下方有承接；缩量下影更像洗盘，放量下影要看后续确认</td></tr>
+      <tr><td>十字星</td><td>开收接近，多空犹豫</td><td>低位可能止跌，高位可能变盘，必须结合量能和位置</td></tr>
+      <tr><td>锤子线</td><td>低位长下影，小实体</td><td>潜在反转，但次日阳线确认前不要重仓</td></tr>
+      <tr><td>阴包阳/阳包阴</td><td>后一根K线吞没前一根</td><td>高位阴包阳常见转弱；低位阳包阴是强反击信号</td></tr>
+    </tbody>
+  </table>
+  <div class="kline-grid">
+    <div class="kline-item"><svg width="92" height="110" viewBox="0 0 92 110" role="img" aria-label="长阳线示意图"><rect width="92" height="110" rx="12" fill="#0f172a"/><line x1="46" y1="18" x2="46" y2="88" stroke="#ef4444" stroke-width="3"/><rect x="32" y="32" width="28" height="45" rx="3" fill="#ef4444"/><line x1="22" y1="88" x2="70" y2="88" stroke="#475569"/></svg><span>长阳线</span></div>
+    <div class="kline-item"><svg width="92" height="110" viewBox="0 0 92 110" role="img" aria-label="长阴线示意图"><rect width="92" height="110" rx="12" fill="#0f172a"/><line x1="46" y1="18" x2="46" y2="88" stroke="#22c55e" stroke-width="3"/><rect x="32" y="32" width="28" height="45" rx="3" fill="#22c55e"/><line x1="22" y1="88" x2="70" y2="88" stroke="#475569"/></svg><span>长阴线</span></div>
+    <div class="kline-item"><svg width="92" height="110" viewBox="0 0 92 110" role="img" aria-label="上影线示意图"><rect width="92" height="110" rx="12" fill="#0f172a"/><line x1="46" y1="14" x2="46" y2="84" stroke="#ef4444" stroke-width="3"/><rect x="32" y="62" width="28" height="17" rx="3" fill="#ef4444"/><line x1="22" y1="88" x2="70" y2="88" stroke="#475569"/></svg><span>上影线</span></div>
+    <div class="kline-item"><svg width="92" height="110" viewBox="0 0 92 110" role="img" aria-label="下影线示意图"><rect width="92" height="110" rx="12" fill="#0f172a"/><line x1="46" y1="25" x2="46" y2="92" stroke="#ef4444" stroke-width="3"/><rect x="32" y="30" width="28" height="17" rx="3" fill="#ef4444"/><line x1="22" y1="92" x2="70" y2="92" stroke="#475569"/></svg><span>下影线</span></div>
+    <div class="kline-item"><svg width="92" height="110" viewBox="0 0 92 110" role="img" aria-label="十字星示意图"><rect width="92" height="110" rx="12" fill="#0f172a"/><line x1="46" y1="22" x2="46" y2="86" stroke="#e2e8f0" stroke-width="3"/><line x1="31" y1="54" x2="61" y2="54" stroke="#e2e8f0" stroke-width="4"/><line x1="22" y1="88" x2="70" y2="88" stroke="#475569"/></svg><span>十字星</span></div>
+    <div class="kline-item"><svg width="92" height="110" viewBox="0 0 92 110" role="img" aria-label="锤子线示意图"><rect width="92" height="110" rx="12" fill="#0f172a"/><line x1="46" y1="35" x2="46" y2="92" stroke="#ef4444" stroke-width="3"/><rect x="32" y="38" width="28" height="14" rx="3" fill="#ef4444"/><line x1="22" y1="92" x2="70" y2="92" stroke="#475569"/></svg><span>锤子线</span></div>
+    <div class="kline-item"><svg width="118" height="110" viewBox="0 0 118 110" role="img" aria-label="阴包阳示意图"><rect width="118" height="110" rx="12" fill="#0f172a"/><line x1="43" y1="28" x2="43" y2="75" stroke="#ef4444" stroke-width="3"/><rect x="31" y="42" width="24" height="24" rx="3" fill="#ef4444"/><line x1="75" y1="20" x2="75" y2="88" stroke="#22c55e" stroke-width="3"/><rect x="62" y="30" width="26" height="48" rx="3" fill="#22c55e"/><line x1="22" y1="90" x2="96" y2="90" stroke="#475569"/></svg><span>阴包阳</span></div>
+  </div>
+  <div class="callout warn"><strong>看图顺序：</strong>先看K线出现的位置，再看成交量是否配合。单个形态只能提示多空力量变化，不能单独作为买卖理由。</div>
+  <div class="callout warn"><strong>单根K线不交易：</strong>同样的锤子线，出现在下跌末端和出现在高位震荡里，意义完全不同。先看位置，再看量，再看形态。</div>
+</section>
+
+<section class="section tone-red" id="a03">
+  <div class="sec-head"><span class="sec-num">03</span><div class="sec-title"><h3>量价关系：成交量是市场投票强度</h3><p>价格告诉你结果，成交量告诉你有多少资金认同这个结果。</p></div></div>
+  <table class="table">
+    <thead><tr><th>组合</th><th>常见含义</th><th>操作判断</th></tr></thead>
+    <tbody>
+      <tr><td>放量上涨</td><td>资金主动进攻</td><td>低位突破更可信；高位连续放量要警惕加速赶顶</td></tr>
+      <tr><td>缩量上涨</td><td>抛压小，筹码稳定</td><td>趋势中是健康；底部初期缩量涨说明资金还不够强</td></tr>
+      <tr><td>放量下跌</td><td>资金出逃或恐慌抛售</td><td>高位放量跌优先离场；低位放量跌需等止跌确认</td></tr>
+      <tr><td>缩量下跌</td><td>主动卖盘减少</td><td>上涨趋势中的缩量回调，是均线回踩策略的核心买点</td></tr>
+      <tr><td>天量天价</td><td>高位分歧极大</td><td>若次日不能继续放量创新高，通常是减仓信号</td></tr>
+      <tr><td>地量地价</td><td>无人交易，情绪冷淡</td><td>只能说明接近冷却，不等于马上反弹</td></tr>
+    </tbody>
+  </table>
+  <div class="kline-grid">
+    <div class="kline-item"><svg width="170" height="120" viewBox="0 0 170 120" role="img" aria-label="放量上涨示意图"><rect width="170" height="120" rx="12" fill="#0f172a"/><polyline points="22,78 48,65 74,58 100,42 130,30" fill="none" stroke="#ef4444" stroke-width="3"/><rect x="28" y="88" width="10" height="16" fill="#64748b"/><rect x="54" y="82" width="10" height="22" fill="#64748b"/><rect x="80" y="72" width="10" height="32" fill="#64748b"/><rect x="106" y="55" width="10" height="49" fill="#64748b"/><rect x="132" y="42" width="10" height="62" fill="#ef4444"/><text x="16" y="18" fill="#e2e8f0" font-size="11" font-weight="700">价涨 + 量放大</text></svg><span>放量上涨</span></div>
+    <div class="kline-item"><svg width="170" height="120" viewBox="0 0 170 120" role="img" aria-label="缩量回调示意图"><rect width="170" height="120" rx="12" fill="#0f172a"/><polyline points="20,36 48,44 76,54 104,61 138,67" fill="none" stroke="#22c55e" stroke-width="3"/><polyline points="18,70 50,62 82,60 114,58 146,56" fill="none" stroke="#f59e0b" stroke-width="2" stroke-dasharray="4 3"/><rect x="28" y="70" width="10" height="34" fill="#64748b"/><rect x="56" y="78" width="10" height="26" fill="#64748b"/><rect x="84" y="86" width="10" height="18" fill="#64748b"/><rect x="112" y="92" width="10" height="12" fill="#64748b"/><rect x="140" y="96" width="10" height="8" fill="#64748b"/><text x="16" y="18" fill="#e2e8f0" font-size="11" font-weight="700">价格回落 + 量递减</text></svg><span>缩量回调</span></div>
+    <div class="kline-item"><svg width="170" height="120" viewBox="0 0 170 120" role="img" aria-label="天量天价示意图"><rect width="170" height="120" rx="12" fill="#0f172a"/><polyline points="18,75 44,58 70,45 96,28 124,30 150,48" fill="none" stroke="#ef4444" stroke-width="3"/><circle cx="96" cy="28" r="4" fill="#f59e0b"/><rect x="28" y="86" width="10" height="18" fill="#64748b"/><rect x="56" y="78" width="10" height="26" fill="#64748b"/><rect x="84" y="36" width="10" height="68" fill="#ef4444"/><rect x="112" y="48" width="10" height="56" fill="#64748b"/><rect x="140" y="62" width="10" height="42" fill="#22c55e"/><text x="16" y="18" fill="#e2e8f0" font-size="11" font-weight="700">高位巨量 + 冲高回落</text></svg><span>天量天价</span></div>
+  </div>
+  <div class="callout info"><strong>量价图怎么用：</strong>低位放量上涨偏启动，高位放量上涨偏分歧；缩量回调只有在原趋势向上时才是机会。</div>
+  <div class="flow">
+    <div class="flow-step"><strong>先看位置</strong><span>低位放量和高位放量完全不同。低位放量可能是启动，高位放量可能是派发。</span></div>
+    <div class="flow-step"><strong>再看连续性</strong><span>单日放量可能是消息刺激，连续3~5日温和放量才更像趋势资金进入。</span></div>
+    <div class="flow-step"><strong>最后看承接</strong><span>放量后次日缩量不跌，是承接好；放量后次日直接低开低走，是资金接力失败。</span></div>
+  </div>
+</section>
+
+<section class="section tone-red" id="a04">
+  <div class="sec-head"><span class="sec-num">04</span><div class="sec-title"><h3>主力行为：试盘、洗盘、拉升、出货</h3><p>不要神化主力，但要理解资金行为会在量价上留下痕迹。</p></div></div>
+  <table class="table">
+    <thead><tr><th>阶段</th><th>K线与量能</th><th>识别重点</th><th>常见误判</th></tr></thead>
+    <tbody>
+      <tr><td>建仓</td><td>低位横盘，成交量温和，偶尔放量不涨</td><td>股价跌不动，均线逐渐走平</td><td>以为长期不涨就是垃圾股，忽略低位吸筹</td></tr>
+      <tr><td>试盘</td><td>突然拉升或砸盘，幅度快，持续短</td><td>快急短小，量不一定大，随后快速回到原区间</td><td>把试盘当启动，过早追入</td></tr>
+      <tr><td>洗盘</td><td>缩量下跌，回踩均线，跌幅通常可控</td><td>量能递减、关键支撑不破、板块未明显转弱</td><td>把健康回调当破位卖飞</td></tr>
+      <tr><td>拉升</td><td>放量突破、均线多头、涨停或大阳线</td><td>突破平台后回踩不破，量价配合</td><td>看到第一根阳线就满仓，忽略回踩确认</td></tr>
+      <tr><td>出货</td><td>高位放量震荡，长上影，高开低走</td><td>量不减但价格不上，利好频出反而不涨</td><td>把出货震荡当洗盘，越跌越补</td></tr>
+    </tbody>
+  </table>
+  <div class="callout tip"><strong>判断洗盘还是出货：</strong>洗盘通常缩量、跌不破关键均线、回调后能快速收回；出货通常放量、高位宽幅震荡、反弹越来越弱。</div>
+  <div class="kline-grid" style="justify-content:center">
+    <div class="kline-item"><svg width="680" height="180" viewBox="0 0 680 180" style="min-width:480px" role="img" aria-label="主力行为全周期示意图：建仓、试盘、洗盘、拉升、出货五个阶段的价格与成交量变化"><rect width="680" height="180" rx="14" fill="#0f172a"/>
+      <polyline points="20,130 80,128 140,132 200,125 210,110 220,130 240,115 260,108 300,64 330,52 350,56 370,44 400,38 430,46 460,42 490,100 520,95 550,88 590,75 640,90" fill="none" stroke="#ef4444" stroke-width="2.5"/>
+      <rect x="30" y="152" width="18" height="12" fill="#475569"/><rect x="60" y="150" width="18" height="14" fill="#475569"/><rect x="90" y="153" width="18" height="11" fill="#475569"/>
+      <rect x="145" y="148" width="14" height="16" fill="#475569"/><rect x="165" y="150" width="14" height="14" fill="#475569"/>
+      <rect x="215" y="145" width="14" height="19" fill="#475569"/><rect x="235" y="152" width="14" height="12" fill="#475569"/>
+      <rect x="270" y="128" width="16" height="36" fill="#ef4444"/><rect x="295" y="118" width="16" height="46" fill="#ef4444"/><rect x="320" y="108" width="16" height="56" fill="#ef4444"/>
+      <rect x="350" y="140" width="14" height="24" fill="#475569"/><rect x="374" y="148" width="14" height="16" fill="#475569"/>
+      <rect x="415" y="106" width="18" height="58" fill="#ef4444"/><rect x="442" y="100" width="18" height="64" fill="#ef4444"/><rect x="469" y="108" width="18" height="56" fill="#ef4444"/>
+      <rect x="510" y="128" width="16" height="36" fill="#ef4444"/><rect x="535" y="134" width="16" height="30" fill="#475569"/><rect x="560" y="130" width="16" height="34" fill="#475569"/>
+      <text x="55" y="20" fill="#94a3b8" font-size="13" font-weight="700" text-anchor="middle">建仓</text>
+      <text x="160" y="20" fill="#64748b" font-size="13" font-weight="700" text-anchor="middle">试盘</text>
+      <text x="235" y="20" fill="#f59e0b" font-size="13" font-weight="700" text-anchor="middle">洗盘</text>
+      <text x="310" y="20" fill="#ef4444" font-size="13" font-weight="700" text-anchor="middle">拉升</text>
+      <text x="380" y="20" fill="#94a3b8" font-size="13" font-weight="700" text-anchor="middle">洗盘</text>
+      <text x="455" y="20" fill="#ef4444" font-size="13" font-weight="700" text-anchor="middle">拉升</text>
+      <text x="545" y="20" fill="#22c55e" font-size="13" font-weight="700" text-anchor="middle">出货</text>
+      <line x1="110" y1="28" x2="110" y2="168" stroke="#1e293b" stroke-width="1.5"/>
+      <line x1="195" y1="28" x2="195" y2="168" stroke="#1e293b" stroke-width="1.5"/>
+      <line x1="255" y1="28" x2="255" y2="168" stroke="#1e293b" stroke-width="1.5"/>
+      <line x1="345" y1="28" x2="345" y2="168" stroke="#1e293b" stroke-width="1.5"/>
+      <line x1="405" y1="28" x2="405" y2="168" stroke="#1e293b" stroke-width="1.5"/>
+      <line x1="500" y1="28" x2="500" y2="168" stroke="#1e293b" stroke-width="1.5"/>
+      <text x="55" y="38" fill="#475569" font-size="10" text-anchor="middle">量温和·价横盘</text>
+      <text x="160" y="38" fill="#475569" font-size="10" text-anchor="middle">快急短</text>
+      <text x="235" y="38" fill="#f59e0b" font-size="10" text-anchor="middle">缩量跌·不破支撑</text>
+      <text x="310" y="38" fill="#fca5a5" font-size="10" text-anchor="middle">放量突破·连板</text>
+      <text x="380" y="38" fill="#475569" font-size="10" text-anchor="middle">缩量·均线承接</text>
+      <text x="455" y="38" fill="#fca5a5" font-size="10" text-anchor="middle">再度放量·新高</text>
+      <text x="545" y="38" fill="#86efac" font-size="10" text-anchor="middle">放量·高开低走</text>
+    </svg><span>主力行为全周期示意图</span></div>
+  </div>
+</section>
+
+<section class="section tone-red" id="a05">
+  <div class="sec-head"><span class="sec-num">05</span><div class="sec-title"><h3>均线与技术指标：只用来确认，不用来预测</h3><p>技术指标最大的作用是把主观感觉变成可观察条件。</p></div></div>
+  <div class="grid">
+    <div class="card"><span class="tag tag-blue">均线</span><h4>MA5/10/20/60/250</h4><p>短线看MA5/10，中线看MA20/60，牛熊分界看年线MA250。多头排列说明趋势顺，空头排列说明先观望。</p></div>
+    <div class="card"><span class="tag tag-purple">MACD</span><h4>趋势动能</h4><p>零轴上方金叉更强，零轴下方金叉只是反弹。顶背离用于止盈，底背离要等阳线确认。</p></div>
+    <div class="card"><span class="tag tag-amber">KDJ</span><h4>短线敏感</h4><p>KDJ适合看短线超买超卖，但容易钝化。高位连续钝化不是立刻卖，跌破5日线才确认转弱。</p></div>
+    <div class="card"><span class="tag tag-green">布林带</span><h4>波动边界</h4><p>布林带收窄代表变盘临近，放量突破上轨是强势，缩量冲上轨容易回落。</p></div>
+  </div>
+  <div class="callout warn"><strong>不要指标堆砌：</strong>如果MACD、KDJ、RSI都来自同一套价格数据，三个指标同时发信号不等于三倍确定性。优先用价格位置+成交量，再用指标确认。</div>
+</section>
+
+<section class="section tone-red" id="a06">
+  <div class="sec-head"><span class="sec-num">06</span><div class="sec-title"><h3>大盘环境：先判断能不能做，再判断做什么</h3><p>很多策略失效不是策略错，而是市场环境不适合。</p></div></div>
+  <table class="table">
+    <thead><tr><th>市场状态</th><th>识别信号</th><th>适合策略</th><th>仓位建议</th></tr></thead>
+    <tbody>
+      <tr><td>进攻市</td><td>指数站上MA60且MA60向上；涨停家数&gt;100；炸板率&lt;25%；主线板块持续3天以上</td><td>龙头跟踪、N字、突破、均线回踩</td><td>5~8成，分批</td></tr>
+      <tr><td>震荡市</td><td>指数围绕MA60反复；板块轮动快；涨停60~100家；北向忽进忽出</td><td>均线回踩、低吸，不追高</td><td>3~5成，快进快出</td></tr>
+      <tr><td>防守市</td><td>指数跌破MA250；涨停&lt;50；跌停增加；主线持续性差</td><td>空仓学习，或只做防御板块观察</td><td>0~3成</td></tr>
+      <tr><td>极端情绪期</td><td>连续百股跌停/涨停，消息冲击强</td><td>等待情绪落地，不做主观抄底</td><td>优先保护本金</td></tr>
+    </tbody>
+  </table>
+  <div class="callout info"><strong>每天收盘后30秒检查：</strong>上证/创业板是否在MA60上方、涨停家数、炸板率、成交额是否破万亿、今天最强板块是否连续强于大盘。</div>
+</section>
+
+<section class="section tone-red" id="a07">
+  <div class="sec-head"><span class="sec-num">07</span><div class="sec-title"><h3>年度重要节点时间线：每个月看什么</h3><p>A股有明显的日历效应。节点不是买入理由，但能告诉你资金可能提前埋伏哪些方向。</p></div></div>
+  <div class="month-grid">
+    <div class="month-card"><h4>1月</h4><ul><li>年报预告密集期，关注业绩预增、高送转预期。</li><li>春节消费预热：白酒、食品饮料、旅游、零售。</li><li>机构年度配置启动，核心资产容易获得资金回流。</li></ul></div>
+    <div class="month-card"><h4>2月</h4><ul><li>春节档电影票房，关注影视院线、传媒、游戏。</li><li>返工复产，关注基建链、工程机械、建材。</li><li>两会预期开始发酵，政策主题提前轮动。</li></ul></div>
+    <div class="month-card"><h4>3月</h4><ul><li>两会政策窗口，关注新质生产力、科技自主、军工、低空经济。</li><li>年报逐步披露，绩优股和高分红方向受关注。</li><li>春季行情后段，警惕题材炒作过热。</li></ul></div>
+    <div class="month-card"><h4>4月</h4><ul><li>一季报和年报集中披露，业绩验证最关键。</li><li>关注一季报超预期：半导体设备、AI算力、出口链、消费复苏。</li><li>绩差股、商誉减值、高应收公司风险上升。</li></ul></div>
+    <div class="month-card"><h4>5月</h4><ul><li>财报窗口结束，市场进入业绩真空期。</li><li>关注旅游、酒店、航空的五一数据验证。</li><li>防御板块和高股息常在弱行情中表现更稳。</li></ul></div>
+    <div class="month-card"><h4>6月</h4><ul><li>中报预告前置观察，关注订单和价格变化。</li><li>618电商数据影响消费电子、家电、平台经济。</li><li>资金面可能受季末考核影响，短线波动加大。</li></ul></div>
+    <div class="month-card"><h4>7月</h4><ul><li>中报预告密集，重点看净利润增速和毛利率变化。</li><li>暑期档：影视、游戏、旅游、航空、酒店。</li><li>高温用电：电力、煤炭、储能、虚拟电厂。</li></ul></div>
+    <div class="month-card"><h4>8月</h4><ul><li>中报披露高峰，机构根据业绩调仓。</li><li>开学季：教育信息化、文具、消费电子。</li><li>暑期消费尾声，兑现压力上升。</li></ul></div>
+    <div class="month-card"><h4>9月</h4><ul><li>金九银十预期：地产链、建材、家居、汽车。</li><li>苹果/消费电子新品季，关注果链、光学、结构件。</li><li>国庆出行预期提前交易。</li></ul></div>
+    <div class="month-card"><h4>10月</h4><ul><li>三季报披露，全年业绩预期重新定价。</li><li>国庆消费数据验证：旅游、免税、餐饮、影视。</li><li>四季度政策窗口开启，关注稳增长和科技方向。</li></ul></div>
+    <div class="month-card"><h4>11月</h4><ul><li>双11数据：电商、快递、家电、美妆、消费电子。</li><li>跨年行情预期启动，机构提前布局来年主线。</li><li>冬季供暖：煤炭、天然气、电力。</li></ul></div>
+    <div class="month-card"><h4>12月</h4><ul><li>中央经济工作会议定调来年政策方向。</li><li>基金排名战，强势股可能被抱团或兑现。</li><li>年报预告前瞻，关注业绩确定性和高分红。</li></ul></div>
+  </div>
+  <div class="callout tip"><strong>时间线怎么用：</strong>提前2~4周把可能受益板块加入观察池，再用量价确认是否有资金进入。不要等新闻上热搜后才追。</div>
+</section>
+<!--MODULE-B-START-->
+<div class="part-divider tone-purple"><h2>模块二 · 策略与软件实操</h2><p>选对策略，用软件落地，用规则保护本金。不讲理论，直接给每个策略的条件判断、入场止损止盈规则，以及用哪个软件怎么筛出对应形态。</p></div>
+
+<section class="section tone-purple" id="b00">
+  <div class="sec-head"><span class="sec-num">00</span><div class="sec-title"><h3>先选你的类型</h3><p>不同时间投入对应不同策略，乱用会让你两边都做不好。</p></div></div>
+  <div class="grid">
+    <div class="card"><span class="tag tag-red">全天可盯盘</span><h4>短线涨停策略</h4><p>适合§01首板、N字形；需要关注竞价、盘中量比和炸板情况。</p></div>
+    <div class="card"><span class="tag tag-amber">每天30~60分钟</span><h4>龙头跟踪 + 中线回踩</h4><p>适合§03龙头跟踪和§04均线回踩；收盘后操作，持仓1~3周。</p></div>
+    <div class="card"><span class="tag tag-green">周末集中选股</span><h4>底部突破 + 背离反转</h4><p>适合§05底部量堆突破和§06背离策略；持仓1~2个月。</p></div>
+    <div class="card"><span class="tag tag-blue">不做技术面</span><h4>基本面选股</h4><p>看财报和产业链判断，长期持有，详见 <a href="#c01">模块三 · 财报与产业链</a>。</p></div>
+  </div>
+</section>
+
+<section class="section tone-purple" id="b01">
+  <div class="sec-head"><span class="sec-num">01</span><div class="sec-title"><h3>涨停板系列策略</h3><p>A股特有的制度形成了独特的涨停板博弈，三个子策略按风险从低到高排列。</p></div></div>
+
+  <div class="strat-card">
+    <div class="strat-head">
+      <div class="strat-title">1-A 首板低位策略</div>
+      <div class="strat-meta"><span class="strat-badge badge-time">⏱ 需盯盘</span><span class="strat-badge badge-diff">难度 ★★☆</span><span class="strat-badge badge-hold">持仓 1~5天</span></div>
+    </div>
+    <div class="strat-body">
+      <strong>核心逻辑：</strong>低位第一个涨停板往往是主力启动前的突破信号，此时位置低、套牢盘少、上方空间大。<br><br>
+      <strong>选股条件（全部满足）：</strong><br>
+      ✓ 近60日内无涨停记录<br>
+      ✓ 股价在近3个月低位区间横盘<br>
+      ✓ 涨停前5日成交量萎缩<br>
+      ✓ 封板时间14:00前，封板资金稳定不大幅撤单<br>
+      ✓ 流通市值10~100亿（小盘更容易拉升）<br><br>
+      <strong>入场：</strong>次日竞价，高开3%以内可追；超过5%谨慎，超过8%放弃<br>
+      <strong>止损：</strong>买入价-7%，或次日收盘跌破涨停日最低价<br>
+      <strong>止盈：</strong>出现第二个涨停后分批减仓；或涨幅超过15%后根据量能形态判断
+      <div class="kline-grid">
+        <div class="kline-item"><svg width="220" height="130" viewBox="0 0 220 130" role="img" aria-label="低位横盘后首板启动示意图"><rect width="220" height="130" rx="14" fill="#0f172a"/><polyline points="20,78 46,77 72,79 98,76 124,75" fill="none" stroke="#64748b" stroke-width="2"/><line x1="148" y1="34" x2="148" y2="84" stroke="#ef4444" stroke-width="3"/><rect x="136" y="42" width="24" height="34" rx="3" fill="#ef4444"/><rect x="34" y="98" width="8" height="10" fill="#64748b"/><rect x="62" y="99" width="8" height="9" fill="#64748b"/><rect x="90" y="97" width="8" height="11" fill="#64748b"/><rect x="118" y="96" width="8" height="12" fill="#64748b"/><rect x="146" y="74" width="8" height="34" fill="#ef4444"/><text x="20" y="20" fill="#e2e8f0" font-size="12" font-weight="700">低位横盘后首板启动</text><text x="128" y="36" fill="#fca5a5" font-size="11">首板</text></svg><span>首板低位</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="strat-card">
+    <div class="strat-head">
+      <div class="strat-title">1-B N字形涨停策略（首板→回调→再涨停）</div>
+      <div class="strat-meta"><span class="strat-badge badge-time">⏱ 每天看收盘</span><span class="strat-badge badge-diff">难度 ★★★</span><span class="strat-badge badge-hold">持仓 3~15天</span></div>
+    </div>
+    <div class="strat-body">
+      <strong>核心逻辑：</strong>首板启动→健康回调洗盘→第二个涨停确认主力意图，这个结构说明主力没有出货，是真实拉升。<br><br>
+      <strong>回调质量判断（优先按这个选）：</strong><br>
+      ✓ 成交量每日递减（第3日 &lt; 第2日 &lt; 第1日）<br>
+      ✓ 回调幅度不超过首板当日涨幅的50%<br>
+      ✓ 回调不跌破首板当日最低价<br>
+      ✓ 贴近MA10或MA20，均线仍向上<br>
+      ✓ 时间窗口：首板后3~7个交易日<br><br>
+      <strong>入场时机：</strong><br>
+      方式A（保守）：第二涨停封板且封板后30分钟未炸板，尾盘买入<br>
+      方式B（激进）：缩量回调贴MA20时介入，第二板前就持有<br><br>
+      <strong>止损：</strong>买入价-7~8%；或跌破回调最低点<br>
+      <strong>继续持有信号：</strong>第二板次日高开缩量横盘，未破T+1最低点<br>
+      <strong>出场信号：</strong>高开低走+放量；连续2日阴线破MA10；大盘系统性走弱
+      <div class="kline-grid">
+        <div class="kline-item"><svg width="260" height="140" viewBox="0 0 260 140" role="img" aria-label="N字形：首板、缩量回调、第二板确认示意图"><rect width="260" height="140" rx="14" fill="#0f172a"/><polyline points="20,82 48,82 76,48 104,66 132,75 160,70 188,40 224,36" fill="none" stroke="#ef4444" stroke-width="3"/><polyline points="20,88 54,86 88,78 122,72 156,66 190,58 224,50" fill="none" stroke="#f59e0b" stroke-width="2" stroke-dasharray="4 3"/><rect x="70" y="46" width="16" height="36" rx="3" fill="#ef4444"/><rect x="102" y="62" width="14" height="18" rx="3" fill="#22c55e"/><rect x="130" y="70" width="14" height="12" rx="3" fill="#22c55e"/><rect x="184" y="40" width="18" height="36" rx="3" fill="#ef4444"/><rect x="70" y="96" width="8" height="30" fill="#ef4444"/><rect x="104" y="108" width="8" height="18" fill="#64748b"/><rect x="132" y="115" width="8" height="11" fill="#64748b"/><rect x="188" y="92" width="8" height="34" fill="#ef4444"/><text x="18" y="20" fill="#e2e8f0" font-size="12" font-weight="700">首板 → 缩量回调 → 第二板确认</text><text x="66" y="40" fill="#fca5a5" font-size="11">首板</text><text x="112" y="62" fill="#fde68a" font-size="11">回调</text><text x="178" y="34" fill="#fca5a5" font-size="11">二板</text></svg><span>N字形</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="strat-card">
+    <div class="strat-head">
+      <div class="strat-title">1-C 跳空缺口策略</div>
+      <div class="strat-meta"><span class="strat-badge badge-time">⏱ 需盯盘</span><span class="strat-badge badge-diff">难度 ★★☆</span><span class="strat-badge badge-hold">持仓 2~10天</span></div>
+    </div>
+    <div class="strat-body">
+      <strong>突破缺口（看涨，继续持有）：</strong><br>
+      条件：放量向上跳空 + 量比&gt;2 + 跳空前有横盘蓄势5日以上<br>
+      入场：缺口当日或次日回踩缺口上沿不破时介入<br>
+      止损：缺口完全回补（跌回跳空下沿以下）<br>
+      止盈：目标 = 缺口大小×2，或遇天量天价形态出<br><br>
+      <strong>竭尽缺口（看跌，警告信号）：</strong><br>
+      特征：高位连续大涨后，放巨量跳空高开，开盘即是最高点，随后回落<br>
+      操作：持仓者减仓，不追；通常是阶段性顶部信号
+      <div class="kline-grid">
+        <div class="kline-item"><svg width="240" height="140" viewBox="0 0 240 140" role="img" aria-label="横盘蓄势后跳空突破示意图"><rect width="240" height="140" rx="14" fill="#0f172a"/><polyline points="18,95 44,95 70,95 90,68" fill="none" stroke="#64748b" stroke-width="2"/><line x1="115" y1="40" x2="115" y2="106" stroke="#ef4444" stroke-width="3"/><rect x="104" y="52" width="22" height="38" rx="3" fill="#ef4444"/><polyline points="116,50 142,40 168,40 194,36 220,30" fill="none" stroke="#ef4444" stroke-width="3"/><line x1="90" y1="70" x2="104" y2="56" stroke="#f59e0b" stroke-width="2" stroke-dasharray="3 3"/><rect x="28" y="106" width="8" height="10" fill="#64748b"/><rect x="56" y="106" width="8" height="10" fill="#64748b"/><rect x="110" y="86" width="10" height="30" fill="#ef4444"/><rect x="145" y="100" width="8" height="16" fill="#64748b"/><text x="18" y="20" fill="#e2e8f0" font-size="12" font-weight="700">横盘蓄势 → 跳空突破 → 上涨</text><text x="86" y="38" fill="#fde68a" font-size="11">缺口</text></svg><span>突破缺口</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section tone-purple" id="b02">
+  <div class="sec-head"><span class="sec-num">02</span><div class="sec-title"><h3>情绪周期：决定今天能不能出手</h3><p>环境判断比选股更优先，错误的市场环境做什么都容易亏。</p></div></div>
+  <table class="table">
+    <thead><tr><th>监控指标</th><th>进攻信号</th><th>观望信号</th><th>在哪里看</th></tr></thead>
+    <tbody>
+      <tr><td>当日涨停家数</td><td>&gt;100家</td><td>&lt;60家</td><td>东方财富App → 涨停统计</td></tr>
+      <tr><td>炸板率</td><td>&lt;20%</td><td>&gt;40%</td><td>同花顺 → 涨跌停 → 涨停板</td></tr>
+      <tr><td>2连板以上家数</td><td>&gt;20家</td><td>&lt;10家</td><td>同花顺 → 连板股</td></tr>
+      <tr><td>大盘量能</td><td>沪深两市合计&gt;8000亿</td><td>&lt;5000亿</td><td>任何行情软件</td></tr>
+      <tr><td>北向资金</td><td>净流入&gt;20亿</td><td>净流出</td><td>东方财富 → 北上资金</td></tr>
+    </tbody>
+  </table>
+  <div class="callout tip"><strong>操作规则：</strong>以上5项满足3项以上为进攻日，2项以下为观望日。每天收盘花30秒记录，3~5天就能感受到情绪节奏。</div>
+</section>
+
+<section class="section tone-purple" id="b03">
+  <div class="sec-head"><span class="sec-num">03</span><div class="sec-title"><h3>龙头跟踪策略</h3><p>板块行情中，资金集中在最强1~2只。跟龙头比选板块更重要。</p></div></div>
+  <div class="strat-card">
+    <div class="strat-head">
+      <div class="strat-title">龙头识别 + 跟踪流程</div>
+      <div class="strat-meta"><span class="strat-badge badge-time">⏱ 收盘后30分钟</span><span class="strat-badge badge-diff">难度 ★★★</span><span class="strat-badge badge-hold">持仓 1~5天</span></div>
+    </div>
+    <div class="strat-body">
+      <strong>什么是真龙头：</strong><br>
+      ① 板块中第一个涨停的（时间龙头）<br>
+      ② 连板天数最多（强度龙头）<br>
+      ③ 流通市值5~80亿（太大拉不动，太小容易被砸）<br>
+      ④ 有清晰的题材逻辑支撑（不是乱蹭热点）<br><br>
+      <strong>每日操作流程：</strong><br>
+      Step 1：东方财富 → 板块涨幅榜，找当天涨幅最大板块<br>
+      Step 2：点进板块，按涨停天数/涨幅排序<br>
+      Step 3：确认是否为该板块最早涨停<br>
+      Step 4：龙头次日如缩量回调至日内低点附近，是短线介入点<br><br>
+      <strong>龙头 vs 跟风的区别：</strong>龙头率先涨停后次日继续强势，带动板块；跟风股跟涨，龙头一旦转弱跟风跌得更惨。原则：只买龙头，不买跟风。
+    </div>
+  </div>
+</section>
+
+<section class="section tone-purple" id="b04">
+  <div class="sec-head"><span class="sec-num">04</span><div class="sec-title"><h3>均线回踩策略（中线）</h3><p>趋势向上的股票回调到均线时，是上班族最适合参与的机会。</p></div></div>
+  <div class="strat-card">
+    <div class="strat-head">
+      <div class="strat-title">均线回踩 MA20 买点</div>
+      <div class="strat-meta"><span class="strat-badge badge-time">⏱ 每天5分钟</span><span class="strat-badge badge-diff">难度 ★★☆</span><span class="strat-badge badge-hold">持仓 10~30天</span></div>
+    </div>
+    <div class="strat-body">
+      <strong>前提（全部满足）：</strong><br>
+      ✓ MA5 &gt; MA10 &gt; MA20 &gt; MA60（多头排列）<br>
+      ✓ 近1个月内有明显放量突破（量比&gt;2的阳线）<br>
+      ✓ 目前处于回调而非趋势反转（大盘未明显走弱）<br><br>
+      <strong>入场条件：</strong><br>
+      ✓ 当日收盘价在MA20 ±2% 范围内<br>
+      ✓ 当日成交量 &lt; 5日均量60%（缩量回踩，卖压小）<br>
+      ✓ 收盘站稳MA20<br><br>
+      <strong>止损：</strong>跌破MA20收盘价 -3%<br>
+      <strong>止盈目标：</strong>前高位置，或涨幅&gt;15%后开始分批减仓<br>
+      <strong>为什么适合上班族：</strong>只需收盘后花5分钟检查，不需要盯盘，持股周期给压力不大。
+      <div class="kline-grid">
+        <div class="kline-item"><svg width="260" height="140" viewBox="0 0 260 140" role="img" aria-label="上升趋势回踩MA20后企稳示意图"><rect width="260" height="140" rx="14" fill="#0f172a"/><polyline points="18,96 48,82 78,68 108,54 138,62 168,76 198,64 230,46" fill="none" stroke="#ef4444" stroke-width="3"/><polyline points="18,104 52,96 86,86 120,76 154,70 188,64 230,56" fill="none" stroke="#f59e0b" stroke-width="2"/><circle cx="168" cy="76" r="5" fill="#22c55e"/><text x="18" y="20" fill="#e2e8f0" font-size="12" font-weight="700">上升趋势回踩 MA20 后企稳</text><text x="174" y="82" fill="#86efac" font-size="11">买点</text><text x="210" y="54" fill="#fde68a" font-size="11">MA20</text><rect x="42" y="106" width="8" height="18" fill="#64748b"/><rect x="76" y="100" width="8" height="24" fill="#64748b"/><rect x="110" y="92" width="8" height="32" fill="#ef4444"/><rect x="144" y="112" width="8" height="12" fill="#64748b"/><rect x="178" y="114" width="8" height="10" fill="#64748b"/></svg><span>均线回踩</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section tone-purple" id="b05">
+  <div class="sec-head"><span class="sec-num">05</span><div class="sec-title"><h3>底部量堆突破策略（中线）</h3><p>主力长期建仓会形成低位量堆，突破时是加速信号。</p></div></div>
+  <div class="strat-card">
+    <div class="strat-head">
+      <div class="strat-title">横盘蓄势后放量突破</div>
+      <div class="strat-meta"><span class="strat-badge badge-time">⏱ 周末选股</span><span class="strat-badge badge-diff">难度 ★★☆</span><span class="strat-badge badge-hold">持仓 15~45天</span></div>
+    </div>
+    <div class="strat-body">
+      <strong>形态特征（全部满足）：</strong><br>
+      ① 横盘20个交易日以上，振幅 &lt;8%<br>
+      ② 横盘期间成交量逐渐萎缩<br>
+      ③ 某天放量（量比&gt;3）向上突破横盘上沿<br>
+      ④ 收盘站稳突破点（不是穿头破脚）<br><br>
+      <strong>入场：</strong><br>
+      方式A：放量突破当日尾盘，确认收盘站稳后买入<br>
+      方式B：次日回踩突破点不破时买入（更安全）<br><br>
+      <strong>止损：</strong>跌回横盘区域内 -2% 立即止损<br>
+      <strong>止盈目标：</strong>横盘区间宽度×2 为第一目标（横盘10元区间突破，目标+20%）
+      <div class="kline-grid">
+        <div class="kline-item"><svg width="270" height="140" viewBox="0 0 270 140" role="img" aria-label="横盘蓄势后放量突破上沿示意图"><rect width="270" height="140" rx="14" fill="#0f172a"/><rect x="18" y="60" width="160" height="40" rx="6" fill="none" stroke="#475569" stroke-width="1.5" stroke-dasharray="5 3"/><line x1="18" y1="60" x2="178" y2="60" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4 3"/><line x1="18" y1="100" x2="178" y2="100" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4 3"/><polyline points="18,95 38,90 58,94 78,88 98,92 118,86 138,92 158,88 178,92 198,60 226,50 254,38" fill="none" stroke="#ef4444" stroke-width="3"/><circle cx="198" cy="60" r="5" fill="#22c55e"/><rect x="28" y="106" width="8" height="10" fill="#64748b"/><rect x="58" y="108" width="8" height="8" fill="#64748b"/><rect x="88" y="107" width="8" height="9" fill="#64748b"/><rect x="118" y="108" width="8" height="8" fill="#64748b"/><rect x="194" y="76" width="12" height="30" fill="#ef4444"/><rect x="226" y="60" width="10" height="46" fill="#ef4444"/><text x="18" y="20" fill="#e2e8f0" font-size="12" font-weight="700">横盘蓄势 → 放量突破上沿</text><text x="182" y="56" fill="#86efac" font-size="11">突破</text><text x="68" y="78" fill="#94a3b8" font-size="11">横盘区间</text></svg><span>底部量堆突破</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section tone-purple" id="b06">
+  <div class="sec-head"><span class="sec-num">06</span><div class="sec-title"><h3>技术背离反转策略（中线）</h3><p>下跌动能衰竭时，技术指标会提前发出信号。</p></div></div>
+  <div class="strat-card">
+    <div class="strat-head">
+      <div class="strat-title">MACD底背离 + 多指标共振</div>
+      <div class="strat-meta"><span class="strat-badge badge-time">⏱ 周末选股</span><span class="strat-badge badge-diff">难度 ★★★</span><span class="strat-badge badge-hold">持仓 20~60天</span></div>
+    </div>
+    <div class="strat-body">
+      <strong>底背离识别：</strong>股价创新低，但MACD的DIF/DEA值没有同步创新低，代表下跌动能在减弱。<br><br>
+      <strong>共振条件（越多越可靠）：</strong><br>
+      ① MACD出现底背离<br>
+      ② KDJ在20以下出现金叉<br>
+      ③ RSI在30以下<br>
+      ④ 成交量持续萎缩（卖压耗尽）<br>
+      ⑤ 出现锤子线、十字星或长下影线<br><br>
+      <strong>入场：</strong>出现背离后，等第一根明显阳线收盘确认再买，不要抢背离时入场<br>
+      <strong>止损：</strong>跌破最近低点 -3%<br>
+      <strong>风险提示：</strong>背离可以持续出现多次，不能看到第一次就重仓；必须等价格行为确认。
+      <div class="kline-grid">
+        <div class="kline-item"><svg width="280" height="150" viewBox="0 0 280 150" role="img" aria-label="股价创新低但MACD未同步创新低的底背离示意图"><rect width="280" height="150" rx="14" fill="#0f172a"/><polyline points="18,36 56,50 94,78 132,92 170,104 208,96 246,72" fill="none" stroke="#ef4444" stroke-width="3"/><circle cx="94" cy="78" r="4" fill="#ef4444"/><circle cx="170" cy="104" r="4" fill="#ef4444"/><text x="60" y="76" fill="#fca5a5" font-size="10">低点1</text><text x="138" y="120" fill="#fca5a5" font-size="10">低点2(更低)</text><line x1="40" y1="120" x2="260" y2="120" stroke="#334155" stroke-width="1"/><polyline points="18,108 56,108 94,118 132,116 170,114 208,110 246,106" fill="none" stroke="#f59e0b" stroke-width="2"/><text x="250" y="104" fill="#fde68a" font-size="10">MACD</text><circle cx="94" cy="118" r="3" fill="#f59e0b"/><circle cx="170" cy="114" r="3" fill="#f59e0b"/><text x="62" y="132" fill="#fde68a" font-size="10">DIF低1</text><text x="138" y="130" fill="#fde68a" font-size="10">DIF低2(未新低)</text><polyline points="210,96 240,76 260,52" fill="none" stroke="#22c55e" stroke-width="3"/><text x="246" y="68" fill="#86efac" font-size="10">确认阳线</text><text x="18" y="18" fill="#e2e8f0" font-size="12" font-weight="700">股价创新低，MACD未同步创新低 = 底背离</text></svg><span>MACD底背离</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section tone-purple" id="b07">
+  <div class="sec-head"><span class="sec-num">07</span><div class="sec-title"><h3>软件筛选实战指南</h3><p>每个策略对应具体操作步骤。把时间花在判断上，不是手动翻股票。</p></div></div>
+
+  <div class="callout info"><strong>工具选择：</strong>同花顺PC版「条件选股」最强大；东方财富App「涨停复盘」最直观；通达信支持自定义公式，适合进阶筛选。三个工具都免费。</div>
+
+  <p class="step-title">筛法1：同花顺PC — 均线回踩买点</p>
+  <div class="code-block"><span class="code-comment">// 路径：同花顺PC → 选股 → 条件选股</span>
+<span class="code-key">条件①</span> <span class="code-val">均线多头排列</span>：技术指标→均线→MA5&gt;MA10&gt;MA20&gt;MA60
+<span class="code-key">条件②</span> <span class="code-val">贴近MA20</span>：收盘价 &lt; MA20×1.02 且 收盘价 &gt; MA20×0.98
+<span class="code-key">条件③</span> <span class="code-val">缩量回调</span>：今日成交量 &lt; 5日均量×0.6
+<span class="code-key">条件④</span> <span class="code-val">排除ST</span>：基本面→特殊处理→非ST非*ST
+
+→ 开始选股 → 结果逐一看K线图确认形态</div>
+
+  <p class="step-title">筛法2：同花顺PC — 底部量堆突破</p>
+  <div class="code-block"><span class="code-key">条件①</span> <span class="code-val">今日突破20日高点</span>：今日收盘价 &gt; 20日最高价
+<span class="code-key">条件②</span> <span class="code-val">放量</span>：今日量比 &gt; 2.5
+<span class="code-key">条件③</span> <span class="code-val">确认横盘</span>：近20日振幅 &lt; 10%
+<span class="code-key">条件④</span> <span class="code-val">阳线确认</span>：今日阳线实体 &gt; 3%
+
+→ 结果通常20~50只，逐一确认是否有横盘+突破形态</div>
+
+  <p class="step-title">筛法3：东方财富App — 筛N字形候选</p>
+  <div class="code-block"><span class="code-comment">// 路径：东方财富App → 行情 → 涨停 → 涨停复盘</span>
+Step 1：查看涨停列表，按「连续涨停天数」排序
+Step 2：找出2连板以上股票，逐一查看K线
+Step 3：检查首板后回调是否满足：
+  <span class="code-val">✓ 成交量 &lt; 首板50%</span>
+  <span class="code-val">✓ 回调幅度 &lt; 15%</span>
+  <span class="code-val">✓ 回调贴近MA10/MA20</span>
+Step 4：满足3条 → 加入观察列表
+<span class="code-comment">// 每天收盘后10分钟完成</span></div>
+
+  <p class="step-title">筛法4：通达信公式选股 — N字形自动筛选（进阶）</p>
+  <div class="code-block"><span class="code-comment">// 通达信PC → 公式管理 → 新建条件选股公式 → 粘贴下方</span>
+COND1:=BARSLASTCOUNT(C=LIMITUP,10)&gt;=1; <span class="code-comment">{近10日内有涨停}</span>
+COND2:=V&lt;REF(V,1)*0.6; <span class="code-comment">{今日量&lt;昨日60%}</span>
+COND3:=C&gt;MA(C,10)*0.97 AND C&lt;MA(C,10)*1.03; <span class="code-comment">{贴近MA10}</span>
+COND1 AND COND2 AND COND3
+
+<span class="code-comment">// 保存 → 在选股界面调用此公式 → 自动筛N字形候选</span></div>
+
+  <p class="step-title">筛法5：情绪周期每日30秒检查</p>
+  <div class="code-block">东方财富App：首页 → 市场 → 涨停统计（涨停总数+炸板率）
+同花顺App：行情 → 涨跌停 → 涨停板 → 顶部看涨停家数历史
+
+记录方法：备忘录记每天涨停家数/炸板率/连板家数
+3天数据对比就能感受到情绪周期节奏</div>
+</section>
+
+<section class="section tone-purple" id="b08">
+  <div class="sec-head"><span class="sec-num">08</span><div class="sec-title"><h3>仓位与止损计算器</h3><p>用数学代替感觉，每笔交易前用它算好，不要凭感觉决定买多少。</p></div></div>
+  <div class="calc-box">
+    <div class="calc-title">📊 单笔仓位计算</div>
+    <div class="calc-row">
+      <label for="c-total">总资金</label>
+      <input class="calc-input" type="number" id="c-total" placeholder="100000" oninput="calcPos()">
+      <span class="calc-unit">元</span>
+    </div>
+    <div class="calc-row">
+      <label for="c-risk">单笔最大亏损</label>
+      <input class="calc-input" type="number" id="c-risk" placeholder="2" oninput="calcPos()">
+      <span class="calc-unit">%（建议2~3%）</span>
+    </div>
+    <div class="calc-row">
+      <label for="c-stop">止损幅度</label>
+      <input class="calc-input" type="number" id="c-stop" placeholder="7" oninput="calcPos()">
+      <span class="calc-unit">%（根据策略设定）</span>
+    </div>
+    <div class="calc-row">
+      <label for="c-price">股票当前价格</label>
+      <input class="calc-input" type="number" id="c-price" placeholder="10" oninput="calcPos()">
+      <span class="calc-unit">元</span>
+    </div>
+    <div class="calc-result" id="calc-out" aria-live="polite">填入数字后自动计算最大建仓金额和股数</div>
+  </div>
+  <div class="callout tip"><strong>为什么要控制单笔风险：</strong>如果单笔风险是2%，连续止损10次才亏20%，还有翻本机会。如果单笔随意入场，3次止损就可能被迫离场。</div>
+</section>
+
+<section class="section tone-purple" id="b09">
+  <div class="sec-head"><span class="sec-num">09</span><div class="sec-title"><h3>K线形态与量价判断自测</h3><p>判断题，不是知识背诵——同样的形态出现在不同位置，答案不同。</p></div></div>
+
+  <div class="self-test" id="q1">
+    <div class="st-q">Q1 · 一只股票在下跌后的低位出现一根长下影线的锤子线，且成交量比前几日萎缩。最合理的操作是？</div>
+    <div class="kline-grid">
+      <div class="kline-item"><svg width="220" height="130" viewBox="0 0 220 130" role="img" aria-label="低位锤子线配合缩量的示意图"><rect width="220" height="130" rx="14" fill="#0f172a"/><polyline points="20,42 50,56 80,70 110,84 138,92" fill="none" stroke="#22c55e" stroke-width="3"/><line x1="164" y1="64" x2="164" y2="112" stroke="#ef4444" stroke-width="3"/><rect x="152" y="66" width="24" height="12" rx="3" fill="#ef4444"/><rect x="46" y="102" width="8" height="22" fill="#64748b"/><rect x="78" y="108" width="8" height="16" fill="#64748b"/><rect x="110" y="113" width="8" height="11" fill="#64748b"/><rect x="160" y="116" width="8" height="8" fill="#64748b"/><text x="18" y="20" fill="#e2e8f0" font-size="12" font-weight="700">低位锤子线 + 缩量</text><text x="172" y="72" fill="#86efac" font-size="11">潜在止跌</text></svg><span>先观察，等确认</span></div>
+    </div>
+    <div class="st-opts">
+      <button class="st-opt" onclick="qa('q1','a','w')">A. 立刻买入，这是底部反转信号</button>
+      <button class="st-opt" onclick="qa('q1','b','c')">B. 纳入观察，等次日出现阳线确认后再介入</button>
+      <button class="st-opt" onclick="qa('q1','c','w')">C. 不用管，缩量说明没有主力参与</button>
+    </div>
+    <div class="st-explain" id="q1-e"><strong>B正确：</strong>锤子线是潜在反转信号，但"潜在"两字很关键。缩量下影说明卖压减弱，但买方力量还没确认。等次日阳线收盘才算确认，否则可能是短暂反弹后继续下跌。单根K线不单独下注。</div>
+    <button class="st-reset" onclick="resetQ('q1')">↺ 重新作答</button>
+  </div>
+
+  <div class="self-test" id="q2">
+    <div class="st-q">Q2 · 某股连续涨停3天后，第4天高开5%，但收盘时仅涨2%，成交量是前3日平均的3倍。你持有这只股票，应该？</div>
+    <div class="kline-grid">
+      <div class="kline-item"><svg width="230" height="130" viewBox="0 0 230 130" role="img" aria-label="高位天量配合高开低走的示意图"><rect width="230" height="130" rx="14" fill="#0f172a"/><polyline points="18,88 48,70 78,52 108,34 140,28 176,50" fill="none" stroke="#ef4444" stroke-width="3"/><line x1="178" y1="22" x2="178" y2="74" stroke="#ef4444" stroke-width="3"/><rect x="166" y="28" width="24" height="36" rx="3" fill="#ef4444" opacity=".7"/><line x1="178" y1="28" x2="178" y2="64" stroke="#22c55e" stroke-width="3"/><rect x="42" y="96" width="8" height="24" fill="#ef4444"/><rect x="78" y="86" width="8" height="34" fill="#ef4444"/><rect x="114" y="76" width="8" height="44" fill="#ef4444"/><rect x="174" y="40" width="12" height="80" fill="#ef4444"/><text x="18" y="18" fill="#e2e8f0" font-size="12" font-weight="700">高位天量 + 高开低走</text><text x="154" y="86" fill="#fca5a5" font-size="11">出货警告</text></svg><span>高位放量回落</span></div>
+    </div>
+    <div class="st-opts">
+      <button class="st-opt" onclick="qa('q2','a','w')">A. 继续持有，成交量大说明人气旺</button>
+      <button class="st-opt" onclick="qa('q2','b','c')">B. 减仓至少一半，高位天量+高开低走是出货信号</button>
+      <button class="st-opt" onclick="qa('q2','c','w')">C. 加仓，高开说明明天还会继续上涨</button>
+    </div>
+    <div class="st-explain" id="q2-e"><strong>B正确：</strong>连板后高位放天量，但价格从高开回落只剩2%，说明当天大量筹码在换手——主力可能借高开的好位置在出货。"量大"在低位是好事，在高位是警告。持仓者应优先保留利润，减仓等观察。</div>
+    <button class="st-reset" onclick="resetQ('q2')">↺ 重新作答</button>
+  </div>
+
+  <div class="self-test" id="q3">
+    <div class="st-q">Q3 · 你想追一只刚涨停的股票，但当前是下午2:50，涨停板封板资金仅为流通盘的0.5%，炸板率今天是45%。你应该？</div>
+    <div class="kline-grid">
+      <div class="kline-item"><svg width="230" height="130" viewBox="0 0 230 130" role="img" aria-label="封板资金弱且炸板率高的示意图"><rect width="230" height="130" rx="14" fill="#0f172a"/><line x1="80" y1="36" x2="80" y2="100" stroke="#ef4444" stroke-width="3"/><rect x="68" y="44" width="24" height="46" rx="3" fill="#ef4444"/><text x="18" y="20" fill="#e2e8f0" font-size="12" font-weight="700">封板弱 + 炸板率高</text><line x1="104" y1="80" x2="160" y2="80" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4 3"/><polyline points="130,80 145,66 160,74 175,62 190,70 206,88" fill="none" stroke="#22c55e" stroke-width="2.5"/><text x="132" y="60" fill="#fde68a" font-size="11">炸板后下跌</text><rect x="76" y="100" width="8" height="18" fill="#64748b" opacity=".6"/><text x="92" y="50" fill="#94a3b8" font-size="10">封板资金弱</text><line x1="79" y1="44" x2="102" y2="44" stroke="#f97316" stroke-width="1.5" stroke-dasharray="3 2"/></svg><span>不追，情绪弱</span></div>
+    </div>
+    <div class="st-opts">
+      <button class="st-opt" onclick="qa('q3','a','w')">A. 赶快挂单买入，今天这么多涨停说明行情好</button>
+      <button class="st-opt" onclick="qa('q3','b','w')">B. 等明天竞价再决定</button>
+      <button class="st-opt" onclick="qa('q3','c','c')">C. 放弃，炸板率高+封板弱=高风险，等情绪修复再看</button>
+    </div>
+    <div class="st-explain" id="q3-e"><strong>C正确：</strong>炸板率45%意味着市场整体情绪弱，封板后很容易被砸开。封板量0.5%说明主力意愿不强，容易炸板。在这种环境下追板，胜率大幅下降。情绪不好时宁可踏空，不要强行参与。</div>
+    <button class="st-reset" onclick="resetQ('q3')">↺ 重新作答</button>
+  </div>
+
+  <div class="self-test" id="q4">
+    <div class="st-q">Q4 · MACD在股价创新低的同时，DIF和DEA也同步创新低。这代表什么？</div>
+    <div class="kline-grid">
+      <div class="kline-item"><svg width="260" height="150" viewBox="0 0 260 150" role="img" aria-label="价格与MACD同步创新低、不存在背离的示意图"><rect width="260" height="150" rx="14" fill="#0f172a"/><polyline points="18,36 56,58 94,84 132,110" fill="none" stroke="#22c55e" stroke-width="3"/><circle cx="94" cy="84" r="4" fill="#ef4444"/><circle cx="132" cy="110" r="4" fill="#ef4444"/><text x="64" y="80" fill="#fca5a5" font-size="10">低点1</text><text x="106" y="126" fill="#fca5a5" font-size="10">低点2↓更低</text><line x1="18" y1="130" x2="260" y2="130" stroke="#334155" stroke-width="1"/><polyline points="18,132 56,136 94,141 132,146" fill="none" stroke="#f59e0b" stroke-width="2"/><circle cx="94" cy="141" r="3" fill="#f59e0b"/><circle cx="132" cy="146" r="3" fill="#f59e0b"/><text x="136" y="130" fill="#fde68a" font-size="10">DIF也↓更低 = 无背离</text><text x="18" y="20" fill="#e2e8f0" font-size="12" font-weight="700">价格与MACD同步创新低 ≠ 背离</text><line x1="18" y1="120" x2="255" y2="28" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="4 3" opacity=".5"/><text x="155" y="62" fill="#fca5a5" font-size="10">方向一致</text></svg><span>同步创新低，趋势未止</span></div>
+    </div>
+    <div class="st-opts">
+      <button class="st-opt" onclick="qa('q4','a','w')">A. 底背离，即将反弹，可以买入</button>
+      <button class="st-opt" onclick="qa('q4','b','c')">B. 下跌趋势仍在延续，暂时不是买入时机</button>
+      <button class="st-opt" onclick="qa('q4','c','w')">C. MACD信号失效，参考KDJ</button>
+    </div>
+    <div class="st-explain" id="q4-e"><strong>B正确：</strong>底背离是股价创新低但指标不同步创新低，说明卖压开始减弱。而这道题描述的是股价和指标同步创新低，代表下跌动能仍然充足，趋势未止，不应入场。理解背离的前提是方向不同步，同步下跌不是背离。</div>
+    <button class="st-reset" onclick="resetQ('q4')">↺ 重新作答</button>
+  </div>
+</section>
+
+<section class="section tone-purple" id="b10">
+  <div class="sec-head"><span class="sec-num">10</span><div class="sec-title"><h3>交易心理：比任何策略更重要的部分</h3><p>大部分亏损不是策略错误，而是心理偏差导致的执行失误。</p></div></div>
+
+  <table class="table">
+    <thead><tr><th>心理偏差</th><th>交易中的表现</th><th>对抗方法</th></tr></thead>
+    <tbody>
+      <tr><td><strong>锚定效应</strong></td><td>亏损后以买入价为参考，不肯在更低的价格止损（"都跌这么多了，再等等"）</td><td>止损只看技术位置，和买入价无关。每天问自己：如果现在才第一次看这只股，我还会买吗？</td></tr>
+      <tr><td><strong>处置效应</strong></td><td>盈利时急着卖，亏损时死拿着。结果是卖飞了赚钱的，扛住了亏钱的</td><td>入场时就写好止盈止损条件，不要持仓中临时决定</td></tr>
+      <tr><td><strong>近因偏差</strong></td><td>连赚3次后觉得自己找到规律，开始加仓甚至加杠杆，然后一次亏回去</td><td>样本少于20次不做统计判断。连赚时检查是策略有效还是运气好，再看仓位是否适当</td></tr>
+      <tr><td><strong>FOMO恐惧错过</strong></td><td>看到某板块连续大涨，控制不住在高位追入，之后高位接盘成为出货对象</td><td>告诉自己：错过这次没关系，下一次机会已经在路上。追高的代价是不对称的——涨了不多，跌了很深。</td></tr>
+      <tr><td><strong>报复性交易</strong></td><td>连续止损后情绪激动，用更大的仓位做下一笔来"追回来"，结果亏得更多</td><td>连续3笔止损后强制休息1天。亏损时市场没有欠你钱，报复市场只会让你亏得更快。</td></tr>
+    </tbody>
+  </table>
+  <div class="callout danger"><strong>核心原则：</strong>在入场前写好规则，在持仓时执行规则，在出场后复盘规则。所有临场"感觉"都是心理偏差，规则是用来替代感觉的。</div>
+
+  <p class="step-title">连亏后的标准动作</p>
+  <div class="code-block">连续3笔止损：
+  Step 1：暂停交易1天，不看盘，去做别的事
+  Step 2：复盘每笔：止损是因为策略失效，还是自己违反了规则？
+  Step 3：如果3笔都是按规则止损 → 可能是市场环境不适合当前策略
+  Step 4：如果3笔都是因为没止损、或追高 → 执行问题，先不做，先看
+
+回来后：
+  ✓ 先用1/3仓位做1~2笔，找回节奏
+  ✗ 不要直接大仓位来"追回来"</div>
+</section>
+
+<section class="section tone-purple" id="b11">
+  <div class="sec-head"><span class="sec-num">11</span><div class="sec-title"><h3>不推荐新手的策略</h3><p>知道什么不该做，和知道什么该做同样重要。</p></div></div>
+  <table class="table">
+    <thead><tr><th>策略</th><th>为什么不推荐</th><th>替代方案</th></tr></thead>
+    <tbody>
+      <tr><td>底部抄底</td><td>下跌趋势中每个"底"都像真底，越抄越套</td><td>等MA5上穿MA20，趋势确认后再入</td></tr>
+      <tr><td>纯消息面跟风</td><td>你看到消息时机构已经提前3~5天布局完毕</td><td>消息+技术共振，看量价是否配合</td></tr>
+      <tr><td>亏损补仓摊薄</td><td>越补越套，是散户最常见的致命操作</td><td>严格止损，止损后空仓重新选股</td></tr>
+      <tr><td>高杠杆融资</td><td>A股单日可以跌停，杠杆会让单次亏损超出承受范围</td><td>不加杠杆，盈利稳定后再考虑融资</td></tr>
+      <tr><td>单靠技术指标</td><td>所有指标都来自同一套价格数据，不代表独立信号</td><td>价格位置+成交量+指标三者结合</td></tr>
+    </tbody>
+  </table>
+</section>
+<!--MODULE-C-START-->
+<div class="part-divider tone-teal"><h2>模块三 · 财报与产业链</h2><p>看懂公司赚钱逻辑，再判断股票值不值得拿。技术形态解决"什么时候买"，财报和产业链解决"为什么买、能不能拿久"。</p></div>
+
+<section class="section tone-purple" id="c01">
+  <div class="sec-head"><span class="sec-num">01</span><div class="sec-title"><h3>财报三张表怎么看</h3><p>利润表看赚钱能力，资产负债表看家底，现金流量表看钱有没有真的进账。</p></div></div>
+  <div class="grid">
+    <div class="card"><span class="tag tag-purple">利润表</span><h4>公司表面赚了多少钱</h4><p>看营业收入、毛利率、净利润、费用率。重点不是只看利润增长，而是利润增长来自收入增长、涨价，还是降本。</p></div>
+    <div class="card"><span class="tag tag-blue">资产负债表</span><h4>公司家底和负债压力</h4><p>看资产负债率、应收账款、存货、商誉。应收和存货增长快于收入增长，是常见风险信号。</p></div>
+    <div class="card"><span class="tag tag-green">现金流量表</span><h4>利润是不是真钱</h4><p>经营现金流长期大于净利润，说明利润质量高；净利润很好但现金流很差，要警惕赊销或收入确认问题。</p></div>
+  </div>
+  <div class="callout tip"><strong>最简单判断：</strong>净利润增长 + 经营现金流同步增长 + 应收/存货没有异常扩大，这才是质量较高的业绩增长。</div>
+</section>
+
+<section class="section tone-purple" id="c02">
+  <div class="sec-head"><span class="sec-num">02</span><div class="sec-title"><h3>核心财务指标</h3><p>不要被几十个指标淹没。先掌握这几个就足够判断大多数公司。</p></div></div>
+  <table class="table">
+    <thead><tr><th>指标</th><th>看什么</th><th>好信号</th><th>风险信号</th></tr></thead>
+    <tbody>
+      <tr><td>营收增速</td><td>公司规模是否扩大</td><td>连续多个季度增长</td><td>收入增长但利润不增长，可能靠低价换规模</td></tr>
+      <tr><td>毛利率</td><td>产品有没有定价权</td><td>稳定或上升</td><td>持续下降，说明竞争加剧或成本传导困难</td></tr>
+      <tr><td>净利率</td><td>最终能留下多少钱</td><td>费用率受控，净利率提升</td><td>收入增长但净利率下降，增长质量差</td></tr>
+      <tr><td>ROE</td><td>股东投入的钱赚多少回报</td><td>长期&gt;15%</td><td>靠高杠杆推高ROE，持续性差</td></tr>
+      <tr><td>经营现金流</td><td>利润有没有变成现金</td><td>经营现金流&gt;净利润</td><td>净利润正，经营现金流长期为负</td></tr>
+      <tr><td>资产负债率</td><td>杠杆压力</td><td>制造业通常&lt;60%</td><td>高负债叠加利率上行，利润容易被利息吞掉</td></tr>
+    </tbody>
+  </table>
+  <div class="callout info"><strong>ROE杜邦分解：</strong>ROE = 净利率 × 资产周转率 × 财务杠杆。消费龙头通常靠高净利率，制造业靠周转率，金融地产常靠杠杆。</div>
+</section>
+
+<section class="section tone-purple" id="c03">
+  <div class="sec-head"><span class="sec-num">03</span><div class="sec-title"><h3>财务风险信号</h3><p>好公司不一定马上涨，但财务有问题的公司很容易突然暴雷。</p></div></div>
+  <table class="table">
+    <thead><tr><th>风险信号</th><th>为什么危险</th><th>怎么验证</th></tr></thead>
+    <tbody>
+      <tr><td>应收账款增长快于营收</td><td>卖货但没收到钱，可能靠赊销冲收入</td><td>看应收账款/营业收入比例是否连续上升</td></tr>
+      <tr><td>存货大幅增长</td><td>产品卖不出去，未来可能降价或计提减值</td><td>看存货周转天数是否恶化</td></tr>
+      <tr><td>经营现金流长期低于净利润</td><td>利润可能只是账面利润，不是真钱</td><td>连续3年对比经营现金流和净利润</td></tr>
+      <tr><td>商誉过高</td><td>并购形成的商誉未来可能一次性减值</td><td>看商誉/净资产比例，超过30%需警惕</td></tr>
+      <tr><td>大股东高比例质押</td><td>股价下跌可能触发平仓，形成踩踏</td><td>同花顺F10 → 股东研究 → 股权质押</td></tr>
+      <tr><td>审计意见非标</td><td>审计机构都不完全认可报表</td><td>年报里看审计意见类型</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section class="section tone-purple" id="c04">
+  <div class="sec-head"><span class="sec-num">04</span><div class="sec-title"><h3>估值方法：不同公司用不同尺子</h3><p>估值不是越低越好，而是要看它为什么低、未来会不会变好。</p></div></div>
+  <table class="table">
+    <thead><tr><th>估值方法</th><th>适合行业</th><th>怎么看</th><th>常见误区</th></tr></thead>
+    <tbody>
+      <tr><td>PE 市盈率</td><td>盈利稳定公司：消费、医药、制造</td><td>股价/每股盈利，越低通常越便宜</td><td>周期股PE最低时可能是利润顶点，反而危险</td></tr>
+      <tr><td>PB 市净率</td><td>银行、保险、地产、资源</td><td>股价/每股净资产，适合重资产行业</td><td>资产质量差的公司，低PB可能是价值陷阱</td></tr>
+      <tr><td>PS 市销率</td><td>亏损成长股、软件、创新药</td><td>市值/收入，适合暂未盈利企业</td><td>收入不等于利润，商业模式差的公司PS低也没用</td></tr>
+      <tr><td>PEG</td><td>成长股</td><td>PE/利润增速，PEG&lt;1通常较有吸引力</td><td>增速不可持续时PEG会失真</td></tr>
+      <tr><td>DCF</td><td>现金流稳定企业</td><td>未来现金流折现</td><td>参数很敏感，增长率稍变估值差很多</td></tr>
+    </tbody>
+  </table>
+  <div class="callout warn"><strong>周期股口诀：</strong>高PE可能是底部，低PE可能是顶部。因为周期底部利润低，PE看起来高；周期顶部利润爆发，PE看起来低。</div>
+</section>
+
+<section class="section tone-purple" id="c05">
+  <div class="sec-head"><span class="sec-num">05</span><div class="sec-title"><h3>AI/半导体产业链：小白版从上到下</h3><p>半导体不是一个行业，而是一条超长链条。每个环节赚钱逻辑完全不同。</p></div></div>
+  <div class="mini-flow"><span class="flow-pill">EDA/IP</span><span class="arrow">→</span><span class="flow-pill">设备/材料</span><span class="arrow">→</span><span class="flow-pill">芯片设计</span><span class="arrow">→</span><span class="flow-pill">晶圆制造</span><span class="arrow">→</span><span class="flow-pill">封装测试</span><span class="arrow">→</span><span class="flow-pill">服务器/应用</span></div>
+
+  <div class="chain">
+    <div class="chain-layer">
+      <div class="chain-head">上游：卡脖子层 <span>决定能不能设计、能不能制造</span></div>
+      <div class="chain-body">
+        <div class="node"><div class="node-title">EDA软件：芯片设计的"画图软件"</div><p><strong>做什么：</strong>工程师用EDA设计芯片电路，就像建筑师用CAD画图。没有EDA，芯片设计无法规模化完成。</p><p><strong>为什么重要：</strong>全球高端EDA长期由新思科技、Cadence、Siemens EDA主导，是半导体国产替代最底层环节。</p><div class="tier"><div class="tier-row"><span class="tier-label">A股核心</span><span>华大九天：国内EDA龙头，模拟电路EDA优势明显。</span></div><div class="tier-row"><span class="tier-label">关注逻辑</span><span>国产替代、政策支持、客户验证进度。</span></div></div></div>
+        <div class="node"><div class="node-title">半导体设备：制造芯片的"高端机床"</div><p><strong>做什么：</strong>光刻、刻蚀、薄膜沉积、清洗、检测，每一步都需要专用设备。</p><p><strong>为什么重要：</strong>设备决定制程能力。没有高端设备，就算设计得出芯片也造不出来。</p><div class="tier"><div class="tier-row"><span class="tier-label">第一梯队</span><span>北方华创：刻蚀、PVD、氧化扩散等覆盖广，是平台型设备公司。</span></div><div class="tier-row"><span class="tier-label">第二梯队</span><span>中微公司：刻蚀设备强，进入先进制程供应链。</span></div><div class="tier-row"><span class="tier-label">细分龙头</span><span>芯源微（涂胶显影）、华峰测控（测试设备）、精测电子（检测）。</span></div></div></div>
+        <div class="node"><div class="node-title">材料：制造过程里的"耗材"</div><p><strong>做什么：</strong>硅片是芯片地基，光刻胶负责图形转移，特气/CMP材料用于制造过程。</p><p><strong>为什么重要：</strong>材料涨价会影响晶圆厂成本，也会给国产材料公司带来替代机会。</p><div class="tier"><div class="tier-row"><span class="tier-label">硅片</span><span>沪硅产业、立昂微。</span></div><div class="tier-row"><span class="tier-label">光刻胶</span><span>彤程新材、华懋科技、晶瑞电材。</span></div><div class="tier-row"><span class="tier-label">特气/CMP</span><span>雅克科技、华特气体、鼎龙股份。</span></div></div></div>
+      </div>
+    </div>
+
+    <div class="chain-layer">
+      <div class="chain-head">中游：设计与制造层 <span>决定芯片性能和产能</span></div>
+      <div class="chain-body">
+        <div class="node"><div class="node-title">芯片设计：只设计，不自己建厂</div><p><strong>全球代表：</strong>英伟达（AI GPU）、AMD、高通、博通。</p><p><strong>为什么重要：</strong>设计公司利润率高，靠架构、生态和软件栈建立护城河。英伟达重要不只是因为芯片强，还因为CUDA生态让客户迁移成本很高。</p><div class="tier"><div class="tier-row"><span class="tier-label">A股AI</span><span>寒武纪：云端AI芯片代表，受国产算力替代逻辑影响大。</span></div><div class="tier-row"><span class="tier-label">CPU/DCU</span><span>海光信息：CPU+DCU，国产服务器采购中关注度高。</span></div><div class="tier-row"><span class="tier-label">自主架构</span><span>龙芯中科：自主指令集，偏政府与信创场景。</span></div></div></div>
+        <div class="node"><div class="node-title">晶圆代工：帮芯片设计公司生产</div><p><strong>全球代表：</strong>台积电垄断先进制程，三星、英特尔跟进。</p><p><strong>为什么重要：</strong>制程越先进，单位面积能塞入更多晶体管，性能和功耗更好。先进制程供应紧张会影响AI芯片出货。</p><div class="tier"><div class="tier-row"><span class="tier-label">A股/港股</span><span>中芯国际：国内晶圆代工龙头，先进制程受设备和材料约束。</span></div><div class="tier-row"><span class="tier-label">关注逻辑</span><span>资本开支、设备订单、良率改善、客户导入。</span></div></div></div>
+        <div class="node"><div class="node-title">封装测试：芯片出厂前最后工序</div><p><strong>做什么：</strong>把晶圆切成芯片、封装保护、测试合格后出货。先进封装对AI芯片越来越重要。</p><div class="tier"><div class="tier-row"><span class="tier-label">第一梯队</span><span>长电科技：国内封测龙头。</span></div><div class="tier-row"><span class="tier-label">第二梯队</span><span>通富微电：与AMD合作深，受CPU/GPU封测需求影响。</span></div><div class="tier-row"><span class="tier-label">第三梯队</span><span>华天科技：传统封测龙头之一。</span></div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section tone-purple" id="c06">
+  <div class="sec-head"><span class="sec-num">06</span><div class="sec-title"><h3>算力与光模块：AI行情最容易传导到A股的环节</h3><p>如果说GPU是大脑，服务器是身体，光模块就是神经和血管。</p></div></div>
+  <table class="table">
+    <thead><tr><th>环节</th><th>小白理解</th><th>为什么重要</th><th>相关公司</th></tr></thead>
+    <tbody>
+      <tr><td>AI芯片/GPU</td><td>负责AI训练和推理的计算核心</td><td>算力需求爆发的最直接受益者，全球英伟达最强</td><td>寒武纪、海光信息、景嘉微</td></tr>
+      <tr><td>AI服务器</td><td>把GPU、CPU、内存、散热、电源装成算力机器</td><td>云厂商扩产时，服务器厂商订单最先体现</td><td>浪潮信息、工业富联、紫光股份</td></tr>
+      <tr><td>光模块</td><td>服务器之间高速传输数据的"光通信接口"</td><td>AI集群规模越大，服务器之间通信越多，光模块价值量上升</td><td>中际旭创、新易盛、天孚通信、光迅科技</td></tr>
+      <tr><td>液冷散热</td><td>高性能服务器发热巨大，需要液冷降温</td><td>AI服务器功耗上升，散热从可选变成刚需</td><td>英维克、申菱环境、高澜股份</td></tr>
+      <tr><td>IDC/数据中心</td><td>放服务器、供电、制冷、联网的基础设施</td><td>算力落地需要机房和电力，电力约束成为核心瓶颈</td><td>数据港、奥飞数据、润泽科技</td></tr>
+    </tbody>
+  </table>
+  <div class="callout tip"><strong>光模块为什么A股弹性大：</strong>GPU核心在海外，但光模块、连接器、PCB、散热等供应链有较多A股公司参与，所以英伟达资本开支变化常会传导到这些公司。</div>
+</section>
+
+<section class="section tone-purple" id="c07">
+  <div class="sec-head"><span class="sec-num">07</span><div class="sec-title"><h3>新能源产业链：从资源到整车</h3><p>新能源不是只看整车，利润经常在上游资源和关键材料之间转移。</p></div></div>
+  <div class="mini-flow"><span class="flow-pill">锂矿</span><span class="arrow">→</span><span class="flow-pill">碳酸锂</span><span class="arrow">→</span><span class="flow-pill">正负极/电解液/隔膜</span><span class="arrow">→</span><span class="flow-pill">电芯</span><span class="arrow">→</span><span class="flow-pill">PACK</span><span class="arrow">→</span><span class="flow-pill">整车</span></div>
+  <table class="table">
+    <thead><tr><th>环节</th><th>做什么</th><th>利润逻辑</th><th>A股代表</th></tr></thead>
+    <tbody>
+      <tr><td>锂矿/资源</td><td>提供锂、钴、镍等原材料</td><td>价格上涨时利润弹性最大，但周期波动也最大</td><td>赣锋锂业、天齐锂业、华友钴业</td></tr>
+      <tr><td>碳酸锂/氢氧化锂</td><td>把矿转成电池级材料</td><td>受上游矿价和下游需求共同影响</td><td>天齐锂业、赣锋锂业、盛新锂能</td></tr>
+      <tr><td>正极材料</td><td>决定电池能量密度和成本</td><td>材料技术路线变化大，价格传导能力很重要</td><td>当升科技、容百科技、德方纳米</td></tr>
+      <tr><td>负极/隔膜/电解液</td><td>电池核心材料</td><td>隔膜壁垒较高，电解液周期性较强</td><td>璞泰来、恩捷股份、新宙邦、天赐材料</td></tr>
+      <tr><td>电芯</td><td>把材料做成电池单体</td><td>规模和客户最重要，议价能力看技术和份额</td><td>宁德时代、亿纬锂能、国轩高科</td></tr>
+      <tr><td>整车</td><td>最终品牌和销售</td><td>品牌、渠道、智能化决定估值，成本传导能力关键</td><td>比亚迪、长安汽车、赛力斯</td></tr>
+    </tbody>
+  </table>
+  <div class="callout warn"><strong>新能源链条的反向影响：</strong>碳酸锂涨价利好上游锂矿，但会压缩电池厂和整车厂利润；碳酸锂下跌利空资源股，却可能改善电池和整车毛利率。</div>
+</section>
+
+<section class="section tone-purple" id="c08">
+  <div class="sec-head"><span class="sec-num">08</span><div class="sec-title"><h3>产业链选股逻辑：不要只看"概念"，要看利润怎么传导</h3><p>同一个主题下，不同环节受益顺序和利润弹性完全不同。</p></div></div>
+  <table class="table">
+    <thead><tr><th>判断问题</th><th>如果答案是"是"</th><th>如果答案是"否"</th></tr></thead>
+    <tbody>
+      <tr><td>这个环节是否供不应求？</td><td>涨价可持续，利润弹性大</td><td>只能靠量增长，弹性弱</td></tr>
+      <tr><td>公司能否把成本转嫁给下游？</td><td>毛利率稳定，适合持有</td><td>原材料涨价会压缩利润</td></tr>
+      <tr><td>是否处于国产替代关键环节？</td><td>政策和订单双重驱动，估值可给高</td><td>只跟随行业周期，估值受限</td></tr>
+      <tr><td>是否有海外龙头验证？</td><td>英伟达/台积电/海力士涨价或扩产可映射A股</td><td>题材可能只是概念炒作</td></tr>
+      <tr><td>业绩能否在1~2个季度内兑现？</td><td>机构更愿意配置</td><td>短线炒作后容易回落</td></tr>
+    </tbody>
+  </table>
+  <div class="callout info"><strong>实战路径：</strong>先找产业链中"供需最紧"的环节，再找该环节里"市场份额高+订单能兑现+财报能验证"的公司，最后用技术面找入场点。</div>
+</section>
+<!--MODULE-D-START-->
+<div class="part-divider tone-teal"><h2>模块四 · 信息源与价格传导</h2><p>从外部信号出发，追踪价格如何传到A股。关键不是知道新闻，而是知道新闻会影响哪个环节、谁受益、谁受损、多久传导。</p></div>
+
+<section class="section tone-teal" id="d01">
+  <div class="sec-head"><span class="sec-num">01</span><div class="sec-title"><h3>信息源地图：不同信息解决不同问题</h3><p>不要每天刷无效新闻。把信息分成价格、政策、财报、资金、海外五类。</p></div></div>
+  <table class="table">
+    <thead><tr><th>信息类型</th><th>看什么</th><th>常用渠道</th><th>实战用途</th></tr></thead>
+    <tbody>
+      <tr><td>价格数据</td><td>原材料、半导体、钢铁、化工品涨跌</td><td>SMM、Mysteel、百川盈孚、TrendForce</td><td>判断上游涨价、下游成本压力</td></tr>
+      <tr><td>政策信息</td><td>两会、发改委、工信部、财政补贴、产业规划</td><td>国务院官网、发改委、工信部、财联社</td><td>判断政策主题能否持续</td></tr>
+      <tr><td>财报信息</td><td>业绩预告、季报、毛利率、订单</td><td>巨潮资讯、同花顺F10、东方财富</td><td>验证公司是否真的受益</td></tr>
+      <tr><td>资金信息</td><td>北向、龙虎榜、融资余额、ETF流入</td><td>东方财富、同花顺、Wind/Choice</td><td>判断资金是否认可逻辑</td></tr>
+      <tr><td>海外信号</td><td>英伟达、台积电、海力士、ASML财报和指引</td><td>公司IR、财报电话会、TrendForce</td><td>映射A股相关供应链</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section class="section tone-teal" id="d02">
+  <div class="sec-head"><span class="sec-num">02</span><div class="sec-title"><h3>涨价数据哪里看</h3><p>涨价不是只看新闻标题，要看价格持续性、涨幅和是否能传导。</p></div></div>
+  <table class="table">
+    <thead><tr><th>品类</th><th>推荐渠道</th><th>关注指标</th><th>可能影响板块</th></tr></thead>
+    <tbody>
+      <tr><td>有色金属</td><td>SMM上海有色网</td><td>铜、铝、锂、钴、镍价格</td><td>资源股、电池材料、线缆、家电成本</td></tr>
+      <tr><td>钢铁/煤炭</td><td>Mysteel钢联</td><td>螺纹钢、热卷、铁矿石、焦煤</td><td>钢铁、煤炭、基建、工程机械</td></tr>
+      <tr><td>化工品</td><td>百川盈孚、卓创资讯</td><td>MDI、TDI、PVC、DMC、纯碱</td><td>化工龙头、建材、新能源材料</td></tr>
+      <tr><td>半导体</td><td>TrendForce、DRAMeXchange</td><td>DRAM、NAND、面板价格</td><td>存储、封测、设备、消费电子</td></tr>
+      <tr><td>农产品</td><td>中国粮油信息网、农业农村部</td><td>猪价、玉米、大豆、鸡苗</td><td>养殖、饲料、食品加工</td></tr>
+      <tr><td>免费替代</td><td>东方财富期货、同花顺大宗商品</td><td>主力合约涨跌幅</td><td>日常预警，深度研究再查专业站</td></tr>
+    </tbody>
+  </table>
+  <div class="callout tip"><strong>价格信号三问：</strong>涨价持续了吗？涨价能否传导给下游？公司有没有现货库存或长协优势？这三个问题决定股价弹性。</div>
+</section>
+
+<section class="section tone-teal" id="d03">
+  <div class="sec-head"><span class="sec-num">03</span><div class="sec-title"><h3>海外信号如何映射A股</h3><p>A股很多科技行情不是自己先动，而是海外龙头先给方向。</p></div></div>
+  <div class="grid">
+    <div class="card"><span class="tag tag-blue">英伟达</span><h4>AI算力总龙头</h4><p>关注数据中心收入、资本开支、GPU供需、Blackwell/后续产品节奏。传导到A股光模块、服务器、散热、PCB。</p></div>
+    <div class="card"><span class="tag tag-green">台积电</span><h4>先进制程风向标</h4><p>关注先进制程产能、CapEx、客户需求。传导到半导体设备、材料、先进封装。</p></div>
+    <div class="card"><span class="tag tag-amber">SK海力士/三星</span><h4>存储价格风向标</h4><p>关注DRAM/NAND/HBM价格、库存、扩产。传导到A股存储、封测、设备材料。</p></div>
+    <div class="card"><span class="tag tag-red">ASML</span><h4>设备周期风向标</h4><p>关注订单、EUV/DUV交付、区域收入。传导到国产半导体设备替代预期。</p></div>
+  </div>
+  <div class="callout warn"><strong>注意：</strong>海外龙头上涨不等于A股对应公司一定涨。必须确认A股公司是否在供应链中、订单是否能兑现、估值是否已提前反映。</div>
+</section>
+
+<section class="section tone-teal" id="d04">
+  <div class="sec-head"><span class="sec-num">04</span><div class="sec-title"><h3>价格如何传导到股票</h3><p>不是所有涨价都利好。上游涨价对上游是利润，对下游是成本。</p></div></div>
+  <div class="flow"><span class="pill">价格变化</span><span class="arrow">→</span><span class="pill">利润重新分配</span><span class="arrow">→</span><span class="pill">财报预期变化</span><span class="arrow">→</span><span class="pill">资金提前定价</span><span class="arrow">→</span><span class="pill">股价表现</span></div>
+  <table class="table">
+    <thead><tr><th>情况</th><th>上游</th><th>中游</th><th>下游</th></tr></thead>
+    <tbody>
+      <tr><td>原材料涨价</td><td>资源公司受益，库存重估</td><td>如果能转嫁则中性，否则毛利率下降</td><td>成本上升，利润承压</td></tr>
+      <tr><td>终端需求爆发</td><td>需求拉动涨价</td><td>订单增长，产能利用率提升</td><td>品牌方收入增长，若竞争不激烈则利润增长</td></tr>
+      <tr><td>供给受限</td><td>有产能者受益最大</td><td>抢货、备货，库存周期变化</td><td>供应不足影响交付</td></tr>
+      <tr><td>技术升级</td><td>高端材料/设备受益</td><td>旧产能被淘汰，新产线资本开支增加</td><td>产品ASP提升或体验改善</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section class="section tone-teal" id="d05">
+  <div class="sec-head"><span class="sec-num">05</span><div class="sec-title"><h3>案例：DRAM涨价如何传到A股</h3><p>存储价格是最典型的全球→A股传导案例。</p></div></div>
+  <div class="case-box">
+    <div class="case-step"><strong>Step 1 海外价格信号（0天）</strong><br>TrendForce发布DRAM/NAND合约价上涨，或SK海力士/三星财报指引显示存储价格回升。海外存储股通常先反应。</div>
+    <div class="case-step"><strong>Step 2 A股存储链预期变化（1~5个交易日）</strong><br>市场开始寻找A股存储设计、模组、封测、设备材料公司。逻辑是：存储价格上涨→库存价值提升→毛利率改善→扩产预期提升。</div>
+    <div class="case-step"><strong>Step 3 设备/材料链受益（3~10个交易日）</strong><br>如果涨价持续，存储厂资本开支预期提升，带动半导体设备和材料公司估值修复，如北方华创、中微公司、沪硅产业、雅克科技等。</div>
+    <div class="case-step"><strong>Step 4 下游成本压力（5~15个交易日）</strong><br>服务器、PC、手机厂商的内存成本上升。如果下游无法涨价转嫁，毛利率可能承压。</div>
+  </div>
+  <table class="table">
+    <thead><tr><th>受益方向</th><th>逻辑</th><th>需验证</th></tr></thead>
+    <tbody>
+      <tr><td>存储芯片/模组</td><td>价格上涨改善收入和库存价值</td><td>公司库存、产品价格、客户结构</td></tr>
+      <tr><td>封测</td><td>出货量上升带动封测订单</td><td>订单量、产能利用率</td></tr>
+      <tr><td>设备材料</td><td>扩产预期提升</td><td>资本开支是否真的落地</td></tr>
+      <tr><td>服务器/消费电子</td><td>成本上升，短期可能承压</td><td>是否具备涨价转嫁能力</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section class="section tone-teal" id="d06">
+  <div class="sec-head"><span class="sec-num">06</span><div class="sec-title"><h3>案例：碳酸锂价格变化如何影响新能源</h3><p>同一个价格变化，对产业链不同环节方向相反。</p></div></div>
+  <table class="table">
+    <thead><tr><th>价格变化</th><th>资源端</th><th>材料/电池端</th><th>整车端</th></tr></thead>
+    <tbody>
+      <tr><td>碳酸锂上涨</td><td>锂矿利润弹性最大，资源股受益</td><td>成本压力上升，若无法转嫁则毛利率下降</td><td>电池成本上升，整车利润承压</td></tr>
+      <tr><td>碳酸锂下跌</td><td>资源股利润下滑，库存减值风险</td><td>材料成本改善，但库存高的公司先承压</td><td>整车成本下降，若价格战不激烈则利润改善</td></tr>
+      <tr><td>价格企稳</td><td>资源股估值修复看供需预期</td><td>库存风险下降，毛利率更稳定</td><td>盈利模型更容易预测</td></tr>
+    </tbody>
+  </table>
+  <div class="callout info"><strong>新能源链判断重点：</strong>不要只问"锂涨了吗"，要问"谁有矿、谁有库存、谁能转嫁、谁会被挤压"。价格变化本身不是答案，利润分配才是答案。</div>
+</section>
+
+<section class="section tone-teal" id="d07">
+  <div class="sec-head"><span class="sec-num">07</span><div class="sec-title"><h3>每日/每周信息工作流</h3><p>建立固定动作，避免被新闻流牵着走。</p></div></div>
+  <div class="timeline">
+    <div class="tl-item"><div class="tl-time">每日 5分钟</div><div class="tl-body">看大盘成交额、涨停家数、炸板率、北向资金、最强板块。只记录，不立刻交易。</div></div>
+    <div class="tl-item"><div class="tl-time">每日 10分钟</div><div class="tl-body">看同花顺/东方财富大宗商品异动：单日涨跌&gt;3%的品种加入观察，追踪对应产业链。</div></div>
+    <div class="tl-item"><div class="tl-time">每周 30分钟</div><div class="tl-body">看SMM/Mysteel/TrendForce周度变化：价格是否连续上涨、库存是否下降、下游需求是否改善。</div></div>
+    <div class="tl-item"><div class="tl-time">每月 1次</div><div class="tl-body">复盘本月最强板块和最弱板块，更新年度节点时间线里的下月观察方向。</div></div>
+    <div class="tl-item"><div class="tl-time">财报季</div><div class="tl-body">重点看毛利率、经营现金流、订单/在手合同、管理层指引，验证价格变化是否已经体现在业绩里。</div></div>
+  </div>
+  <div class="callout tip"><strong>效率原则：</strong>每天不要刷2小时新闻。固定检查清单更重要：价格、资金、板块、财报、海外龙头，一项一项看。</div>
+</section>
+
+<section class="section tone-teal" id="d08">
+  <div class="sec-head"><span class="sec-num">08</span><div class="sec-title"><h3>复盘模板：把经验变成系统</h3><p>没有复盘，交易就只是情绪记忆；有复盘，才能知道什么策略适合你。</p></div></div>
+  <table class="table">
+    <thead><tr><th>记录项</th><th>写什么</th><th>例子</th></tr></thead>
+    <tbody>
+      <tr><td>入场理由</td><td>哪个策略，哪些条件满足</td><td>N字形：首板后缩量回调到MA10，第二板确认</td></tr>
+      <tr><td>市场环境</td><td>当日涨停数、炸板率、大盘位置</td><td>涨停120家，炸板率18%，指数站上MA60</td></tr>
+      <tr><td>仓位与止损</td><td>买入金额、计划止损价、最大亏损</td><td>仓位2万，止损-7%，最大亏损1400元</td></tr>
+      <tr><td>实际执行</td><td>是否按计划买卖，有无临时改规则</td><td>盘中看到回落，提前卖出，违反原计划</td></tr>
+      <tr><td>结果</td><td>盈亏金额、持仓天数、是否符合预期</td><td>盈利8%，持仓4天，未到目标但出现放量长上影</td></tr>
+      <tr><td>改进</td><td>下次同类情况怎么做</td><td>高位放量长上影必须至少减半仓</td></tr>
+    </tbody>
+  </table>
+  <div class="case-box">
+    <strong>20笔交易后做统计：</strong><br>
+    ① 哪个策略胜率最高？<br>
+    ② 哪个策略平均盈亏比最好？<br>
+    ③ 亏损最多的是因为市场环境差，还是自己违反规则？<br>
+    ④ 哪类股票最适合你（短线涨停/中线趋势/基本面持有）？<br><br>
+    只有统计过20笔以上，才有资格说"这个策略适不适合我"。
+  </div>
+</section>
+
+<footer class="page-footer">
+  A股交易学习地图 · 单文件合集（原入门基础、策略与软件实操、财报与产业链、信息源与价格传导四部分）· 2026<br>
+  本站是学习材料，不构成投资建议。所有内容须配合止损、仓位管理与复盘使用。
+</footer>
+</div></main>
+<script>
+function qa(qid,opt,c){
+  const s=document.getElementById(qid);
+  if(!s)return;
+  s.querySelectorAll('.st-opt').forEach(el=>{el.disabled=true;el.classList.remove('correct','wrong');});
+  const opts=s.querySelectorAll('.st-opt');
+  const idx={'a':0,'b':1,'c':2}[opt];
+  if(opts[idx])opts[idx].classList.add(c==='c'?'correct':'wrong');
+  const ex=document.getElementById(qid+'-e');
+  if(ex)ex.classList.add('show');
+}
+function resetQ(qid){
+  const s=document.getElementById(qid);
+  if(!s)return;
+  s.querySelectorAll('.st-opt').forEach(el=>{el.disabled=false;el.classList.remove('correct','wrong');});
+  const ex=document.getElementById(qid+'-e');
+  if(ex)ex.classList.remove('show');
+}
+function calcPos(){
+  const total=parseFloat(document.getElementById('c-total').value)||0;
+  const risk=parseFloat(document.getElementById('c-risk').value)||0;
+  const stop=parseFloat(document.getElementById('c-stop').value)||0;
+  const price=parseFloat(document.getElementById('c-price').value)||0;
+  const out=document.getElementById('calc-out');
+  if(!total||!risk||!stop){out.textContent='请填入总资金、最大亏损比例和止损幅度';return;}
+  const maxLoss=total*risk/100;
+  const maxPos=maxLoss/(stop/100);
+  const shares=price>0?Math.floor(maxPos/price/100)*100:0;
+  out.innerHTML='最大亏损金额：<strong>'+maxLoss.toFixed(0)+'元</strong><br>最大建仓金额：<strong>'+maxPos.toFixed(0)+'元</strong>'+(price>0?'<br>可买股数（向下取百股整）：<strong>'+shares+'股</strong>（'+(shares*price).toFixed(0)+'元）':'')+'<br><span style="color:#94a3b8;font-size:12px">公式：总资金 × '+risk+'% ÷ 止损'+stop+'%</span>';
+}
+(function(){
+  const navLinks=document.querySelectorAll('.nav-items a[href^="#"]');
+  const sections=document.querySelectorAll('.section');
+  sections.forEach(s=>new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){navLinks.forEach(a=>a.classList.remove('active'));const a=document.querySelector('.nav-items a[href="#'+e.target.id+'"]');if(a)a.classList.add('active');}});},{rootMargin:'-20% 0px -70% 0px'}).observe(s));
+})();
+window.addEventListener('scroll',()=>{const h=document.documentElement;const p=document.getElementById('prog');if(p)p.style.width=Math.min(1,h.scrollTop/(h.scrollHeight-h.clientHeight))*100+'%';},{passive:true});
+</script>
+</body>
+</html>
