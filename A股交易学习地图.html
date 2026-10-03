@@ -6,9 +6,10 @@
 <title>A股交易学习地图</title>
 <style>
 :root{--bg:#f8fafc;--surface:#fff;--surface2:#f1f5f9;--border:#e2e8f0;--accent:#dc2626;--accent-light:rgba(220,38,38,.08);--green:#16a34a;--green-light:rgba(22,163,74,.08);--amber:#d97706;--amber-light:rgba(217,119,6,.08);--blue:#2563eb;--blue-light:rgba(37,99,235,.08);--purple:#7c3aed;--purple-light:rgba(124,58,237,.08);--teal:#0f766e;--teal-light:rgba(15,118,110,.08);--text:#0f172a;--text-2:#334155;--text-3:#64748b;--nav-w:288px;--nav-bg:#111827;--nav-border:#374151;--nav-text:#e5e7eb;--nav-text3:#9ca3af}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font:16px/1.7 system-ui,-apple-system,"Segoe UI","Noto Sans SC",sans-serif}.progress{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--accent),#f59e0b,var(--purple),var(--teal));z-index:20;width:0}
-.sidebar{position:fixed;inset:0 auto 0 0;width:var(--nav-w);background:var(--nav-bg);border-right:1px solid var(--nav-border);padding:24px 18px;display:flex;flex-direction:column;z-index:10;overflow-y:auto}.brand{color:#fff;font-weight:900;font-size:18px;line-height:1.3}.brand small{display:block;color:var(--nav-text3);font-size:11px;margin-top:6px}.nav-items{margin:14px 0;display:grid;gap:2px}.nav-items a{color:var(--nav-text);text-decoration:none;padding:7px 10px;border-radius:7px;font-size:13px;display:block}.nav-items a.active,.nav-items a:hover{background:#374151;color:#fff}.nav-section{color:var(--nav-text3);font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:.08em;padding:10px 10px 4px}.sidebar-foot{margin-top:auto;border-top:1px solid var(--nav-border);padding-top:14px;display:grid;gap:6px}.sidebar-foot span{color:var(--nav-text3);font-size:12px}
-.main{margin-left:var(--nav-w);padding:0 44px 80px}.content-wrap{max-width:1040px;margin:0 auto}.hero{padding:60px 0 30px}.hero-eyebrow{color:var(--accent);font-weight:900;letter-spacing:.06em;font-size:12px;text-transform:uppercase}h1{font-size:44px;line-height:1.08;margin:14px 0 16px;letter-spacing:-.04em}h1 em{font-style:normal;background:linear-gradient(90deg,var(--accent),#f97316,var(--purple),var(--teal));-webkit-background-clip:text;-webkit-text-fill-color:transparent}.hero-sub{font-size:17px;color:var(--text-2);max-width:800px;margin:0 0 18px}.chip-row{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 18px}.chip{background:var(--accent-light);color:#b91c1c;border:1px solid rgba(220,38,38,.18);padding:5px 10px;border-radius:999px;font-size:12px;font-weight:800}.chip.c2{background:var(--purple-light);color:#6d28d9;border-color:rgba(124,58,237,.18)}.chip.c3{background:var(--teal-light);color:#0f766e;border-color:rgba(15,118,110,.18)}.notice{background:var(--surface);border:1px solid var(--border);border-left:4px solid var(--accent);border-radius:12px;padding:14px 16px;color:var(--text-2);font-size:14px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{padding-left:var(--nav-w)}[id]{scroll-margin-top:16px}.sidebar-backdrop{display:none}body{margin:0;background:var(--bg);color:var(--text);font:16px/1.7 system-ui,-apple-system,"Segoe UI","Noto Sans SC",sans-serif}.progress{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--accent),#f59e0b,var(--purple),var(--teal));z-index:20;width:0}
+.sidebar{position:fixed;inset:0 auto 0 0;width:var(--nav-w);background:var(--nav-bg);border-right:1px solid var(--nav-border);padding:24px 18px;display:flex;flex-direction:column;z-index:10;overflow-y:auto}.brand{color:#fff;font-weight:900;font-size:18px;line-height:1.3}.brand small{display:block;color:var(--nav-text3);font-size:11px;margin-top:6px}.nav-items{margin:14px 0;display:grid;gap:2px}.nav-items a{color:var(--nav-text);text-decoration:none;padding:7px 10px;border-radius:7px;font-size:13px;display:block}.nav-items a.active,.nav-items a:hover{background:#374151;color:#fff}.nav-section-link{text-decoration:none;color:var(--nav-text3)}
+.nav-section{color:var(--nav-text3);font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:.08em;padding:10px 10px 4px}.sidebar-foot{margin-top:auto;border-top:1px solid var(--nav-border);padding-top:14px;display:grid;gap:6px}.sidebar-foot span{color:var(--nav-text3);font-size:12px}
+.main{margin-left:0;padding:0 44px 80px}.content-wrap{max-width:1040px;margin:0 auto}.hero{padding:60px 0 30px}.hero-eyebrow{color:var(--accent);font-weight:900;letter-spacing:.06em;font-size:12px;text-transform:uppercase}h1{font-size:44px;line-height:1.08;margin:14px 0 16px;letter-spacing:-.04em}h1 em{font-style:normal;background:linear-gradient(90deg,var(--accent),#f97316,var(--purple),var(--teal));-webkit-background-clip:text;-webkit-text-fill-color:transparent}.hero-sub{font-size:17px;color:var(--text-2);max-width:800px;margin:0 0 18px}.chip-row{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 18px}.chip{background:var(--accent-light);color:#b91c1c;border:1px solid rgba(220,38,38,.18);padding:5px 10px;border-radius:999px;font-size:12px;font-weight:800}.chip.c2{background:var(--purple-light);color:#6d28d9;border-color:rgba(124,58,237,.18)}.chip.c3{background:var(--teal-light);color:#0f766e;border-color:rgba(15,118,110,.18)}.notice{background:var(--surface);border:1px solid var(--border);border-left:4px solid var(--accent);border-radius:12px;padding:14px 16px;color:var(--text-2);font-size:14px}
 .part-divider{margin:44px 0 8px;padding:0}.part-divider h2{font-size:28px;margin:0 0 6px;letter-spacing:-.02em}.part-divider p{margin:0;color:var(--text-3);font-size:15px}
 .tone-red{--accent:#dc2626;--accent-light:rgba(220,38,38,.08)}.tone-purple{--accent:#7c3aed;--accent-light:rgba(124,58,237,.08)}.tone-teal{--accent:#0f766e;--accent-light:rgba(15,118,110,.08)}
 .section{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:26px;margin:18px 0;box-shadow:0 8px 24px rgba(15,23,42,.04)}.sec-head{display:flex;gap:12px;align-items:flex-start;margin-bottom:16px}.sec-num{background:var(--accent);color:#fff;border-radius:10px;padding:5px 9px;font-weight:900;font-size:14px;flex-shrink:0}.sec-title h3{margin:0;font-size:25px;letter-spacing:-.02em}.sec-title p{margin:3px 0 0;color:var(--text-3);font-size:14px}
@@ -29,8 +30,8 @@
 .self-test{background:var(--surface2);border:1px solid var(--border);border-radius:14px;padding:14px;margin:12px 0}.st-q{font-weight:700;margin-bottom:8px;font-size:15px}.st-opts{display:grid;gap:6px}.st-opt{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:10px 12px;cursor:pointer;font-size:14px;transition:all .12s;text-align:left;width:100%;font-family:inherit}.st-opt:hover{border-color:var(--accent);background:var(--accent-light)}.st-opt.correct{background:var(--green-light);border-color:#16a34a;color:var(--green);pointer-events:none}.st-opt.wrong{background:var(--accent-light);border-color:#dc2626;color:#b91c1c;pointer-events:none}.st-explain{display:none;margin-top:8px;padding:10px;background:#f8fafc;border-radius:10px;font-size:13px;color:var(--text-2);border:1px solid var(--border)}.st-explain.show{display:block}.st-reset{margin-top:10px;background:none;border:1px solid var(--border);border-radius:8px;padding:6px 14px;font-size:13px;color:var(--text-3);cursor:pointer;display:none}.st-reset:hover{border-color:var(--accent);color:var(--accent)}.st-explain.show~.st-reset{display:inline-block}
 .step-title{font-weight:900;font-size:15px;margin:14px 0 6px}
 .page-footer{margin:40px 0 0;padding-top:20px;border-top:1px solid var(--border);color:var(--text-3);font-size:14px}
-.menu-btn{display:none;position:fixed;right:16px;bottom:16px;background:var(--accent);color:#fff;border:0;border-radius:999px;padding:11px 14px;font-weight:900;z-index:30;font-size:14px}
-@media(max-width:768px){.sidebar{display:none}.sidebar.open{display:flex}.main{margin-left:0;padding:0 18px 60px}h1{font-size:32px}.flow-step,.tier-row,.calc-row,.tl-item{grid-template-columns:1fr}.menu-btn{display:block}}
+.menu-btn{display:none;position:fixed;right:16px;bottom:16px;background:var(--accent);color:#fff;border:0;border-radius:999px;padding:11px 14px;font-weight:900;z-index:30;font-size:14px}@media(min-width:769px){.menu-btn{display:none!important}}
+@media(max-width:768px){.sidebar{display:none}.sidebar.open{display:flex}.sidebar-backdrop{display:block;background:rgba(15,23,42,.5);position:fixed;inset:0;z-index:9}body{padding-left:0}.main{padding:0 18px 60px}h1{font-size:32px}.flow-step,.tier-row,.calc-row,.tl-item{grid-template-columns:1fr}.menu-btn{display:block}}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
 </style>
 </head>
@@ -39,7 +40,7 @@
 <aside class="sidebar" id="sidebar">
   <div class="brand">A股交易学习地图<small>一个文件 · 四大模块 · 2026</small></div>
   <nav class="nav-items">
-    <div class="nav-section">模块一 · 入门基础</div>
+    <a class="nav-section nav-section-link" href="#p1">模块一 · 入门基础</a>
     <a href="#a01">01 A股规则</a>
     <a href="#a02">02 K线逻辑</a>
     <a href="#a03">03 量价关系</a>
@@ -47,7 +48,7 @@
     <a href="#a05">05 均线与指标</a>
     <a href="#a06">06 大盘环境</a>
     <a href="#a07">07 年度节点时间线</a>
-    <div class="nav-section">模块二 · 策略与实操</div>
+    <a class="nav-section nav-section-link" href="#p2">模块二 · 策略与实操</a>
     <a href="#b00">00 先选你的类型</a>
     <a href="#b01">01 涨停板系列</a>
     <a href="#b02">02 情绪周期判断</a>
@@ -60,7 +61,7 @@
     <a href="#b09">09 K线形态自测</a>
     <a href="#b10">10 交易心理</a>
     <a href="#b11">11 不推荐的策略</a>
-    <div class="nav-section">模块三 · 财报与产业链</div>
+    <a class="nav-section nav-section-link" href="#p3">模块三 · 财报与产业链</a>
     <a href="#c01">01 三张表怎么看</a>
     <a href="#c02">02 核心指标</a>
     <a href="#c03">03 财务风险信号</a>
@@ -69,7 +70,7 @@
     <a href="#c06">06 算力与光模块</a>
     <a href="#c07">07 新能源链条</a>
     <a href="#c08">08 产业链选股逻辑</a>
-    <div class="nav-section">模块四 · 信息源与传导</div>
+    <a class="nav-section nav-section-link" href="#p4">模块四 · 信息源与传导</a>
     <a href="#d01">01 信息源地图</a>
     <a href="#d02">02 涨价数据哪里看</a>
     <a href="#d03">03 海外信号跟踪</a>
@@ -84,7 +85,8 @@
     <span>学习材料 · 不构成投资建议</span>
   </div>
 </aside>
-<button class="menu-btn" onclick="document.getElementById('sidebar').classList.toggle('open')">菜单</button>
+<button class="menu-btn" onclick="toggleNav()">菜单</button>
+<div class="sidebar-backdrop" onclick="closeNav()"></div>
 <main class="main"><div class="content-wrap">
 <header class="hero">
   <div class="hero-eyebrow">A股交易 · 完整学习地图 · 2026</div>
@@ -94,7 +96,7 @@
   <div class="notice"><strong>风险提示：</strong>本站是学习材料，不构成投资建议。所有策略都必须配合止损、仓位管理和复盘，不能把任何形态、指标或消息当成必中信号。四个模块建议按顺序阅读，但也可以按左侧导航直接跳到自己关心的章节。</div>
 </header>
 <!--MODULE-A-START-->
-<div class="part-divider tone-red"><h2>模块一 · 入门基础</h2><p>先看懂市场语言，再谈策略和收益。本页解决新手最容易漏掉的底层问题：A股规则、K线、成交量、主力行为、大盘环境和每个月需要关注的事件。</p></div>
+<div class="part-divider tone-red sidebar-link" id="p1"><h2>模块一 · 入门基础</h2><p>先看懂市场语言，再谈策略和收益。本页解决新手最容易漏掉的底层问题：A股规则、K线、成交量、主力行为、大盘环境和每个月需要关注的事件。</p></div>
 
 <section class="section tone-red" id="a01">
   <div class="sec-head"><span class="sec-num">01</span><div class="sec-title"><h3>A股基础规则</h3><p>很多交易策略在A股有效，是因为A股有独特交易制度。</p></div></div>
@@ -251,7 +253,7 @@
   <div class="callout tip"><strong>时间线怎么用：</strong>提前2~4周把可能受益板块加入观察池，再用量价确认是否有资金进入。不要等新闻上热搜后才追。</div>
 </section>
 <!--MODULE-B-START-->
-<div class="part-divider tone-purple"><h2>模块二 · 策略与软件实操</h2><p>选对策略，用软件落地，用规则保护本金。不讲理论，直接给每个策略的条件判断、入场止损止盈规则，以及用哪个软件怎么筛出对应形态。</p></div>
+<div class="part-divider tone-purple sidebar-link" id="p2"><h2>模块二 · 策略与软件实操</h2><p>选对策略，用软件落地，用规则保护本金。不讲理论，直接给每个策略的条件判断、入场止损止盈规则，以及用哪个软件怎么筛出对应形态。</p></div>
 
 <section class="section tone-purple" id="b00">
   <div class="sec-head"><span class="sec-num">00</span><div class="sec-title"><h3>先选你的类型</h3><p>不同时间投入对应不同策略，乱用会让你两边都做不好。</p></div></div>
@@ -628,7 +630,7 @@ COND1 AND COND2 AND COND3
   </table>
 </section>
 <!--MODULE-C-START-->
-<div class="part-divider tone-teal"><h2>模块三 · 财报与产业链</h2><p>看懂公司赚钱逻辑，再判断股票值不值得拿。技术形态解决"什么时候买"，财报和产业链解决"为什么买、能不能拿久"。</p></div>
+<div class="part-divider tone-teal sidebar-link" id="p3"><h2>模块三 · 财报与产业链</h2><p>看懂公司赚钱逻辑，再判断股票值不值得拿。技术形态解决"什么时候买"，财报和产业链解决"为什么买、能不能拿久"。</p></div>
 
 <section class="section tone-purple" id="c01">
   <div class="sec-head"><span class="sec-num">01</span><div class="sec-title"><h3>财报三张表怎么看</h3><p>利润表看赚钱能力，资产负债表看家底，现金流量表看钱有没有真的进账。</p></div></div>
@@ -758,7 +760,7 @@ COND1 AND COND2 AND COND3
   <div class="callout info"><strong>实战路径：</strong>先找产业链中"供需最紧"的环节，再找该环节里"市场份额高+订单能兑现+财报能验证"的公司，最后用技术面找入场点。</div>
 </section>
 <!--MODULE-D-START-->
-<div class="part-divider tone-teal"><h2>模块四 · 信息源与价格传导</h2><p>从外部信号出发，追踪价格如何传到A股。关键不是知道新闻，而是知道新闻会影响哪个环节、谁受益、谁受损、多久传导。</p></div>
+<div class="part-divider tone-teal sidebar-link" id="p4"><h2>模块四 · 信息源与价格传导</h2><p>从外部信号出发，追踪价格如何传到A股。关键不是知道新闻，而是知道新闻会影响哪个环节、谁受益、谁受损、多久传导。</p></div>
 
 <section class="section tone-teal" id="d01">
   <div class="sec-head"><span class="sec-num">01</span><div class="sec-title"><h3>信息源地图：不同信息解决不同问题</h3><p>不要每天刷无效新闻。把信息分成价格、政策、财报、资金、海外五类。</p></div></div>
@@ -888,6 +890,10 @@ COND1 AND COND2 AND COND3
 </footer>
 </div></main>
 <script>
+window.addEventListener('hashchange',function(){var sb=document.getElementById('sidebar');if(sb)sb.classList.remove('open');document.body.style.overflow='';});
+function toggleNav(){var sb=document.getElementById('sidebar');if(!sb)return;var open=sb.classList.toggle('open');document.body.style.overflow=open?'hidden':'';if(sb)window.dispatchEvent(new CustomEvent('navchange',{detail:{open:open}}));}
+function closeNav(){var sb=document.getElementById('sidebar');if(sb)sb.classList.remove('open');document.body.style.overflow='';}
+window.addEventListener('resize',function(){if(window.innerWidth>768)closeNav();});
 function qa(qid,opt,c){
   const s=document.getElementById(qid);
   if(!s)return;
@@ -919,6 +925,7 @@ function calcPos(){
 }
 (function(){
   const navLinks=document.querySelectorAll('.nav-items a[href^="#"]');
+  navLinks.forEach(a=>a.addEventListener('click',function(){if(window.innerWidth<=768)closeNav();}));
   const sections=document.querySelectorAll('.section');
   sections.forEach(s=>new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){navLinks.forEach(a=>a.classList.remove('active'));const a=document.querySelector('.nav-items a[href="#'+e.target.id+'"]');if(a)a.classList.add('active');}});},{rootMargin:'-20% 0px -70% 0px'}).observe(s));
 })();
